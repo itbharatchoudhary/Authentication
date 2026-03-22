@@ -23,6 +23,15 @@ authRouter.get("/me", AuthController.getMe);
  */
 authRouter.get("/refresh-token", AuthController.refreshToken);
 
+/**
+ * @route GET api/auth/logout
+ */
+authRouter.get("/logout", AuthController.logout);
+
+/**
+ * @route GET api/auth/logoutAll
+ */
+authRouter.get("/logoutAll", AuthController.logout);
 
 
 export default authRouter
