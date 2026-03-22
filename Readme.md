@@ -1,5 +1,9 @@
 Authentication system
 
+# UserModel
+
+User:[userid, refreshTokenHash, ip, userAgent, createdAt, updatedAt]
+
 # Folder structure
 ## Backend
 
