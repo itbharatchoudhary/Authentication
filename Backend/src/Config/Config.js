@@ -8,6 +8,7 @@ if(!process.env.MONGO_URI){
 
 const Config = {
   MONGO_URI: process.env.MONGO_URI,
+  JWT_SECRET:process.env.JWT_SECRET,
 };
 
 
