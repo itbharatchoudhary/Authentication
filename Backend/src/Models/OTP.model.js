@@ -1,76 +1,37 @@
 import mongoose from "mongoose";
+import config from "../Config/Index.js";
 
-const OTPSchema = new mongoose.Schema(
-  {
-    email: {
-      type: String,
-      required: true,
-      lowercase: true,
-      trim: true,
-    },
-
-    otp: {
-      type: String,
-      required: true,
-    },
-
-    purpose: {
-      type: String,
-      enum: ["email-verification", "password-reset", "login"],
-      default: "email-verification",
-    },
-
-    isUsed: {
-      type: Boolean,
-      default: false,
-    },
-
-    attempts: {
-      type: Number,
-      default: 0,
-      max: 5, // lock after 5 wrong attempts
-    },
-
-    expiresAt: {
-      type: Date,
-      required: true,
-      default: () => new Date(Date.now() + 10 * 60 * 1000), // 10 minutes from now
-    },
+const otpSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+    lowercase: true,
+    trim: true,
   },
-  {
-    timestamps: true, // adds createdAt and updatedAt
-  }
-);
+  hashedOtp: {
+    type: String,
+    required: true,
+  },
+  purpose: {
+    type: String,
+    enum: ["registration", "password-reset"],
+    required: true,
+  },
+  expiresAt: {
+    type: Date,
+    required: true,
+    default: () =>
+      new Date(Date.now() + config.otp.expiresInMinutes * 60 * 1000),
+  },
+  attempts: {
+    type: Number,
+    default: 0,
+  },
+});
 
-// Auto-delete document once expiresAt is reached (TTL index)
-OTPSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
+// TTL index — MongoDB auto-deletes expired OTPs
+otpSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
+otpSchema.index({ email: 1, purpose: 1 });
 
-// Instance method: check if OTP is still valid
-OTPSchema.methods.isValid = function () {
-  return !this.isUsed && this.expiresAt > new Date() && this.attempts < 5;
-};
-
-// Instance method: mark OTP as used
-OTPSchema.methods.markUsed = async function () {
-  this.isUsed = true;
-  await this.save();
-};
-
-// Instance method: increment failed attempt
-OTPSchema.methods.incrementAttempt = async function () {
-  this.attempts += 1;
-  await this.save();
-};
-
-// Static method: find latest valid OTP for an email + purpose
-OTPSchema.statics.findValid = function (email, purpose) {
-  return this.findOne({
-    email: email.toLowerCase(),
-    purpose,
-    isUsed: false,
-    expiresAt: { $gt: new Date() },
-    attempts: { $lt: 5 },
-  }).sort({ createdAt: -1 });
-};
-
-export const OTP = mongoose.model("OTP", OTPSchema);
+const OTP = mongoose.model("OTP", otpSchema);
+export default OTP;
