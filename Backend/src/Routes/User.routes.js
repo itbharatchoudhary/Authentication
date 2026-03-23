@@ -31,7 +31,11 @@ authRouter.get("/logout", AuthController.logout);
 /**
  * @route GET api/auth/logoutAll
  */
-authRouter.get("/logoutAll", AuthController.logout);
+authRouter.get("/logout-all", AuthController.logoutAll);
 
+/**
+ * @route POST api/auth/verify-email
+ */
+authRouter.post("/verify-email", AuthController.verifyEmail);
 
 export default authRouter

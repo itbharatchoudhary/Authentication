@@ -1,14 +1,19 @@
-Authentication system
+# Authentication system
 
-# UserModel
+## Data Model structure
 
-User:[userid, refreshTokenHash, ip, userAgent, createdAt, updatedAt]
+### User.model.js
+user:[username, email, password]
+
+### Session.model.js
+Session:[userid, refreshTokenHash, ip, userAgent, createdAt, updatedAt]
 
 # Folder structure
+
 ## Backend
 
 # Terminal commands
+
 PS C:\Users\LENOVO\OneDrive\Desktop\my work\learning-subject-by -yt\Authentication> npm init -y
 
-PS C:\Users\LENOVO\OneDrive\Desktop\my work\learning-subject-by -yt\Authentication> npm i express mongoose morgan dotenv jsonwebtoken
-
+PS C:\Users\LENOVO\OneDrive\Desktop\my work\learning-subject-by -yt\Authentication> npm i express mongoose morgan dotenv jsonwebtoken cookie-parser nodemailer
