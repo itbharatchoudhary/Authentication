@@ -1,0 +1,125 @@
+# Authentication system flow 
+
+## Email OTP-Based Registration Flow
+User → Register (email, password)
+   ↓
+Create User (isVerified = false)
+   ↓
+Generate OTP (store hashed)
+   ↓
+Send Email OTP
+   ↓
+User enters OTP
+   ↓
+Verify OTP
+   ↓
+Activate Account (isVerified = true)
+   ↓
+Generate Access + Refresh Token
+   ↓
+User LoggedIn 
+
+## Google OAuth Login Flow
+
+User → Click "Login with Google"
+   ↓
+Frontend gets Google ID Token
+   ↓
+Backend verifies token (Google API)
+   ↓
+Check user in DB
+   ↓
+IF exists → Login
+ELSE → Create new user (isVerified = true)
+   ↓
+Generate Access + Refresh Token
+   ↓
+User Logged In 
+
+## Manual Login Authentication Flow
+
+User → Enter email + password
+   ↓
+Find user
+   ↓
+Check password (bcrypt compare)
+   ↓
+Check isVerified
+   ↓
+Generate tokens
+   ↓
+Login success 
+
+## Forgot Password Flow
+
+User → "Forgot Password"
+   ↓
+Enter email
+   ↓
+Generate OTP
+   ↓
+Send OTP
+   ↓
+User enters OTP
+   ↓
+Verify OTP
+   ↓
+Allow password reset
+   ↓
+Update password (hashed)
+   ↓
+Invalidate all sessions
+   ↓
+Login again 
+
+# Backend folder structure
+
+project-root/
+│
+├── src/
+│   ├── config/                 # Configuration files
+│   │   ├── db.js               # MongoDB connection
+│   │   ├── googleAuth.js       # Google OAuth config
+│   │   ├── mailer.js           # Nodemailer + OAuth2 config
+│   │   └── index.js            # Centralized config export
+│   │
+│   ├── controllers/            # Handle requests & responses
+│   │   ├── auth.controller.js
+│   │   ├── user.controller.js
+│   │   └── otp.controller.js
+│   │
+│   ├── models/                 # Mongoose models
+│   │   ├── user.model.js
+│   │   ├── otp.model.js
+│   │   └── session.model.js
+│   │
+│   ├── routes/                 # API routes
+│   │   ├── auth.routes.js
+│   │   ├── user.routes.js
+│   │   └── otp.routes.js
+│   │
+│   ├── middlewares/            # Express middlewares
+│   │   ├── auth.middleware.js  # JWT verification, role checks
+│   │   ├── error.middleware.js # Error handling
+│   │   └── rateLimit.middleware.js # Rate limiting for security
+│   │
+│   ├── services/               # Business logic, reusable services
+│   │   ├── auth.service.js
+│   │   ├── user.service.js
+│   │   ├── otp.service.js
+│   │   └── token.service.js
+│   │
+│   ├── utils/                  # Utility functions
+│   │   ├── emailTemplate.js
+│   │   ├── hash.js             # Hashing passwords & OTPs
+│   │   └── logger.js           # Winston or custom logging
+│   │
+│   ├── app.js                  # Express app setup
+│   
+│             
+├── server.js                   # Entry point
+├── .env                        # Environment variables
+├── package.json
+├── package-lock.json
+├── README.md
+└── .gitignore
