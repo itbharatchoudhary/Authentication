@@ -1,14 +1,19 @@
 import mongoose from "mongoose";
-import Config from "./Config.js";
+import config from "./Index.js";
+import logger from "../utils/logger.js";
 
-async function connectedDB() {
+const connectDB = async () => {
   try {
-    await mongoose.connect(Config.MONGO_URI);
-    console.log("Connected Database successfully");
+    await mongoose.connect(config.db.uri);
+    logger.info("MongoDB connected successfully");
   } catch (err) {
-    console.error("DB Error:", err);
+    logger.error("MongoDB connection error:", err);
     process.exit(1);
   }
-}
+};
 
-export default connectedDB;
+mongoose.connection.on("disconnected", () => {
+  logger.warn("MongoDB disconnected");
+});
+
+export default connectDB;
