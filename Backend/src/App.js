@@ -2,16 +2,16 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config";
 
-import connectDB from "./config/db.js";
+import connectDB from "./config/Database.js";
 import logger from "./utils/logger.js";
-import { generalLimiter } from "./middlewares/rateLimit.middleware.js";
-import { errorHandler, notFound } from "./middlewares/error.middleware.js";
+import { generalLimiter } from "./Middleware/RateLimit.middleware.js";
+import { errorHandler, notFound } from "./Middleware/Error.middleware.js";
 
-import authRoutes from "./routes/auth.routes.js";
-import userRoutes from "./routes/user.routes.js";
-import otpRoutes from "./routes/otp.routes.js";
+import authRoutes from "./Routes/auth.routes.js";
+import userRoutes from "./Routes/User.routes.js";
+import otpRoutes from "./Routes/OTP.routes.js";
 
-import config from "./config/index.js";
+import config from "./Config/Index.js";
 
 const app = express();
 

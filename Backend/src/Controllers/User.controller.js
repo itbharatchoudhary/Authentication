@@ -1,4 +1,4 @@
-import * as userService from "../Services/User.service";
+import * as userService from "../Services/User.service.js";
 
 // GET /api/users/me
 export const getMe = async (req, res, next) => {

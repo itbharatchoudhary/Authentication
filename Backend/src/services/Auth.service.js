@@ -11,7 +11,7 @@ import {
   generateRefreshToken,
   saveSession,
   revokeAllUserSessions,
-} from "./token.service.js";
+} from "./Token.service.js";
 import { hashPassword, comparePassword } from "../utils/hash.js";
 import { verifyGoogleToken } from "../Config/GoogleAuth.js";
 
