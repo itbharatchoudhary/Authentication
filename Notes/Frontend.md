@@ -203,32 +203,27 @@ src/
 │       ├── AuthSlice.js (if Redux)
 │       └── AuthUtils.js
 │
-├── pages/                   # Non-auth main pages
+├── Pages/                   # Non-auth main pages
 │   ├── Home.jsx
 │   ├── Profile.jsx
 │
-├── layouts/                 # Layout wrappers
+├── Layouts/                 # Layout wrappers
 │   ├── MainLayout.jsx
 │   └── AuthLayout.jsx
 │
-├── context/                 # Global context (if not Redux)
+├── Context/                 # Global context (if not Redux)
 │   └── AuthContext.jsx
 │
-├── utils/                   # Helper functions
-│   ├── axiosInstance.js
-│   ├── constants.js
-│   └── helpers.js
+├── Utils/                   # Helper functions
+│   ├── AxiosInstance.js
+│   ├── Constants.js
+│   └── Helpers.js
 │
-├── styles/                  # Global styles
-│   └── global.css
+├── Styles/                  # Global styles
+│   └── Global.css
 │
-└── main.jsx                 # Entry point
+└── Main.jsx                 # Entry point
 
-Good — your flow is already close to what real production systems use. Now let’s turn it into a **clean, professional page architecture** (like big tech products).
-
-You don’t need 10+ messy pages. You need **clear, purpose-driven screens**.
-
----
 
 # 🧩 Core Pages 
 
