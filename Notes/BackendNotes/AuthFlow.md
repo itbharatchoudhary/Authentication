@@ -71,5 +71,3 @@ Update password (hashed)
 Invalidate all sessions
    ↓
 Login again 
-
-# Backend folder structure
