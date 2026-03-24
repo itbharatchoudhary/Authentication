@@ -15,19 +15,19 @@ Frontend/
 │   │   ├── icons/
 │   │   └── styles/
 │   │
-│   ├── components/                 # Reusable global components
-│   │   ├── ui/
+│   ├── Components/                 # Reusable global components
+│   │   ├── Ui/
 │   │   │   ├── Button.jsx
 │   │   │   ├── Input.jsx
 │   │   │   ├── Loader.jsx
 │   │   │   └── Modal.jsx
 │   │   │
-│   │   ├── layout/
+│   │   ├── Layout/
 │   │   │   ├── Navbar.jsx
 │   │   │   ├── Footer.jsx
 │   │   │   └── AuthLayout.jsx
 │   │   │
-│   │   └── common/
+│   │   └── Common/
 │   │       ├── ProtectedRoute.jsx
 │   │       └── ErrorBoundary.jsx
 │   │
