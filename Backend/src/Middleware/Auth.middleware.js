@@ -1,4 +1,4 @@
-import { verifyAccessToken } from "../services/Token.service.js";
+import { verifyAccessToken } from "../Services/Token.service.js";
 import logger from "../utils/logger.js";
 
 export const authenticate = (req, res, next) => {

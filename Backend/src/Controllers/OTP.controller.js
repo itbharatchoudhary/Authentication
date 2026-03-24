@@ -1,5 +1,5 @@
-import { createAndSendOtp } from "../services/OTP.service.js";
-import { findUserByEmail } from "../services/User.service.js";
+import { createAndSendOtp } from "../Services/OTP.service.js";
+import { findUserByEmail } from "../Services/User.service.js";
 
 // POST /api/otp/resend
 export const resendOtp = async (req, res, next) => {

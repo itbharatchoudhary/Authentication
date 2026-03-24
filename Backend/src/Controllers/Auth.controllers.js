@@ -1,5 +1,5 @@
-import * as authService from "../services/auth.service.js";
-import { rotateRefreshToken, revokeSession } from "../services/token.service.js";
+import * as authService from "../Services/Auth.service.js";
+import { rotateRefreshToken, revokeSession } from "../Services/Token.service.js";
 import logger from "../utils/logger.js";
 
 const getMeta = (req) => ({
