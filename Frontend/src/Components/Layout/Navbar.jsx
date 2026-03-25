@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useAuthStore } from "../../app/store.js";
-import { ROUTES } from "../../utils/constants.js";
-import { initials } from "../../utils/formatters.js";
-import api from "../../services/axios.js";
-import Button from "../ui/Button.jsx";
-import Modal from "../ui/Modal.jsx";
+import { useAuthStore } from "../../App/Store.js";
+import { ROUTES } from "../../Utils/Constants.js";
+import { initials } from "../../Utils/Formatters.js";
+import api from "../../Services/Axios.js";
+import Button from "../Ui/Button.jsx";
+import Modal from "../Ui/Modal.jsx";
 
 const NavItem = ({ to, label }) => {
   const loc = useLocation();

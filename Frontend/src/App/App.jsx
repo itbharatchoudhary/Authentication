@@ -1,5 +1,5 @@
 import React from 'react';
-import AppRoutes from './routes.jsx';
+import AppRoutes from './Routes.jsx';
 import Providers from './providers.jsx';
 
 export default function App() {

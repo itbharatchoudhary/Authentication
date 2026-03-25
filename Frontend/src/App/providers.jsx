@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { setupInterceptors } from "../services/interceptors.js";
-import { useAuthStore } from "./store.js";
-import api from "../services/axios.js";
+import { setupInterceptors } from "../Services/Interceptors.js";
+import { useAuthStore } from "./Store.js";
+import api from "../Services/Axios.js";
 
 // Boot interceptors once
 setupInterceptors();

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { useAuthStore } from '../../app/store.js';
-import { ROUTES } from '../../utils/constants.js';
+import { useAuthStore } from '../../App/Store.js';
+import { ROUTES } from '../../Utils/Constants.js';
 
 export default function ProtectedRoute({ children, guestOnly = false, adminOnly = false }) {
   const { isAuth, user } = useAuthStore();

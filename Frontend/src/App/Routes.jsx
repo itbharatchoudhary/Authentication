@@ -1,24 +1,24 @@
 import React, { Suspense, lazy } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { ROUTES } from "../utils/constants.js";
-import ProtectedRoute from "../components/common/ProtectedRoute.jsx";
-import Loader from "../components/ui/Loader.jsx";
+import { ROUTES } from "../Utils/Constants.js";
+import ProtectedRoute from "../Components/Common/ProtectedRoute.jsx";
+import Loader from "../Components/Ui/Loader.jsx";
 
-const Landing = lazy(() => import("../features/landing/pages/Landing.jsx"));
-const Login = lazy(() => import("../features/auth/pages/Login.jsx"));
-const Register = lazy(() => import("../features/auth/pages/Register.jsx"));
-const VerifyOTP = lazy(() => import("../features/auth/pages/VerifyOTP.jsx"));
+const Landing = lazy(() => import("../Features/Landing/Pages/Landing.jsx"));
+const Login = lazy(() => import("../Features/Auth/Pages/Login.jsx"));
+const Register = lazy(() => import("../Features/Auth/Pages/Register.jsx"));
+const VerifyOTP = lazy(() => import("../Features/Auth/Pages/VerifyOTP.jsx"));
 const ForgotPassword = lazy(
-  () => import("../features/auth/pages/ForgotPassword.jsx"),
+  () => import("../Features/Auth/Pages/ForgotPassword.jsx"),
 );
 const ResetPassword = lazy(
-  () => import("../features/auth/pages/ResetPassword.jsx"),
+  () => import("../Features/Auth/Pages/ResetPassword.jsx"),
 );
-const Home = lazy(() => import("../features/home/pages/Home.jsx"));
-const Profile = lazy(() => import("../features/user/pages/Profile.jsx"));
-const NotFound = lazy(() => import("../features/error/pages/NotFound.jsx"));
+const Home = lazy(() => import("../Features/Home/Pages/Home.jsx"));
+const Profile = lazy(() => import("../Features/User/Pages/Profile.jsx"));
+const NotFound = lazy(() => import("../Features/Error/Pages/NotFound.jsx"));
 const Unauthorized = lazy(
-  () => import("../features/error/pages/Unauthorized.jsx"),
+  () => import("../Features/Error/Pages/Unauthorized.jsx"),
 );
 
 export default function AppRoutes() {
