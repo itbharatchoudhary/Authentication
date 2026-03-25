@@ -1,4 +1,4 @@
-import api from '../../../services/axios.js';
+import api from '../../../Services/Axios';
 
 export const getMe        = ()  => api.get('/users/me');
 export const getAllUsers   = ()  => api.get('/users');

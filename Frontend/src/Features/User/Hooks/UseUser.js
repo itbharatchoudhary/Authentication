@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import * as userApi from '../services/user.api.js';
-import { useAuthStore } from '../../../app/store.js';
+import * as userApi from '../Services/User.api.js';
+import { useAuthStore } from '../../../App/Store.js';
 
 export const useUser = () => {
   const { user, patchUser } = useAuthStore();

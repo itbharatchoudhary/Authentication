@@ -1,5 +1,5 @@
 import React from "react";
-import { initials } from "../../../utils/formatters.js";
+import { initials } from "../../../Utils/Formatters";
 
 const Badge = ({ label, color, bg }) => (
   <span
