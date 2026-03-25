@@ -1,7 +1,7 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import ErrorMessage from '../components/ErrorMessage.jsx';
-import { ROUTES } from '../../../utils/constants.js';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import ErrorMessage from "../Components/ErrorMessage.jsx";
+import { ROUTES } from "../../../Utils/Constants.js";
 
 export default function NotFound() {
   const navigate = useNavigate();

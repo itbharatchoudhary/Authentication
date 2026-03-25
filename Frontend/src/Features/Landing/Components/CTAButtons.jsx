@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '../../../components/ui/Button.jsx';
-import { ROUTES } from '../../../utils/constants.js';
+import Button from '../../../Components/Ui/Button.jsx';
+import { ROUTES } from '../../../Utils/Constants.js';
 
 export default function CTAButtons({ guestMode }) {
   const navigate = useNavigate();

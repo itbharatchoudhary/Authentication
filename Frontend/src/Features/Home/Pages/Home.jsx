@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Navbar from "../../../components/layout/Navbar.jsx";
-import Footer from "../../../components/layout/Footer.jsx";
-import HomeHero from "../components/HomeHero.jsx";
+import Navbar from "../../../Components/Layout/Navbar.jsx";
+import Footer from "../../../Components/Layout/Footer.jsx";
+import HomeHero from "../Components/HomeHero.jsx";
 
 const STORIES = [
   {

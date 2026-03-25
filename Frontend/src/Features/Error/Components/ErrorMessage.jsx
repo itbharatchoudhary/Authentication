@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../../components/ui/Button.jsx";
+import Button from "../../../Components/Ui/Button";
 
 export default function ErrorMessage({
   code,
