@@ -1,105 +1,111 @@
 Frontend/
 │
-├── public/ # Static files (favicon, index.html)
+├── public/                  # Static files (favicon, index.html)
 │
 ├── src/
 │ │
-│ ├── app/ # App-level setup
+│ ├── app/                   # App-level setup
 │ │ ├── App.jsx
-│ │ ├── routes.jsx # All routes (centralized)
-│ │ ├── store.js (optional) # Redux/Zustand store
-│ │ └── providers.jsx # Context providers
+│ │ ├── routes.jsx            # All routes (centralized)
+│ │ ├── store.js (optional)   # Redux/Zustand store
+│ │ └── providers.jsx         # Context providers
 │ │
-│ ├── assets/ # Images, icons, logos
+│ ├── assets/                # Images, icons, logos, global styles
 │ │ ├── images/
 │ │ ├── icons/
 │ │ └── styles/
 │ │
-│ ├── Components/ # Reusable global components
-│ │ ├── Ui/
+│ ├── components/            # Reusable global components
+│ │ ├── ui/
 │ │ │ ├── Button.jsx
 │ │ │ ├── Input.jsx
 │ │ │ ├── Loader.jsx
 │ │ │ └── Modal.jsx
 │ │ │
-│ │ ├── Layout/
+│ │ ├── layout/
 │ │ │ ├── Navbar.jsx
 │ │ │ ├── Footer.jsx
 │ │ │ └── AuthLayout.jsx
 │ │ │
-│ │ └── Common/
-│ │ ├── ProtectedRoute.jsx
-│ │ └── ErrorBoundary.jsx
+│ │ └── common/
+│ │   ├── ProtectedRoute.jsx
+│ │   └── ErrorBoundary.jsx
 │ │
-│ ├── Features/ # Feature-based modular structure
+│ ├── features/             # Feature-based modular structure
 │ │
-│ │ ├── Auth/ # 🔐 Authentication feature
-│ │ │ ├── Pages/
+│ │ ├── auth/               # 🔐 Authentication feature
+│ │ │ ├── pages/
 │ │ │ │ ├── Login.jsx
 │ │ │ │ ├── Register.jsx
 │ │ │ │ ├── VerifyOTP.jsx
 │ │ │ │ └── ForgotPassword.jsx
 │ │ │ │
-│ │ │ ├── Components/
+│ │ │ ├── components/
 │ │ │ │ ├── AuthForm.jsx
 │ │ │ │ ├── OTPInput.jsx
 │ │ │ │ └── SocialLogin.jsx
 │ │ │ │
-│ │ │ ├── Services/
-│ │ │ │ └── Auth.api.js # API calls
+│ │ │ ├── services/
+│ │ │ │ └── auth.api.js
 │ │ │ │
-│ │ │ ├── Hooks/
-│ │ │ │ └── UseAuth.js
+│ │ │ ├── hooks/
+│ │ │ │ └── useAuth.js
 │ │ │ │
-│ │ │ └── AuthSlice.js (if Redux)
+│ │ │ └── authSlice.js (if Redux)
 │ │
-│ │ ├── User/ # 👤 User feature
-│ │ │ ├── Pages/
+│ │ ├── user/              # 👤 User feature
+│ │ │ ├── pages/
 │ │ │ │ └── Profile.jsx
 │ │ │ │
-│ │ │ ├── Components/
+│ │ │ ├── components/
 │ │ │ │ └── ProfileCard.jsx
 │ │ │ │
-│ │ │ ├── Services/
-│ │ │ │ └── User.api.js
+│ │ │ ├── services/
+│ │ │ │ └── user.api.js
 │ │ │ │
-│ │ │ └── Hooks/
-│ │ │ └── UseUser.js
+│ │ │ └── hooks/
+│ │ │   └── useUser.js
 │ │
-│ │ ├── Home/ # 🏠 Main app after login
-│ │ │ ├── Pages/
+│ │ ├── home/              # 🏠 Main app after login
+│ │ │ ├── pages/
 │ │ │ │ └── Home.jsx
 │ │ │ │
-│ │ │ └── Components/
-│ │ │ └── HomeHero.jsx
+│ │ │ └── components/
+│ │ │   └── HomeHero.jsx
 │ │
-│ │ └── Landing/ # 🌐 First entry page
-│ │ ├── Pages/
-│ │ │ └── Landing.jsx
-│ │ │
-│ │ └── Components/
-│ │ ├── HeroSection.jsx
-│ │ └── CTAButtons.jsx
+│ │ ├── landing/           #  First entry page
+│ │ │ ├── pages/
+│ │ │ │ └── Landing.jsx
+│ │ │ │
+│ │ │ └── components/
+│ │ │   ├── HeroSection.jsx
+│ │ │   └── CTAButtons.jsx
 │ │
-│ ├── Services/ # Global API config
-│ │ ├── Axios.js
-│ │ └── Interceptors.js
+│ │ └── error/             #  Error pages
+│ │   ├── pages/
+│ │   │ └── NotFound.jsx   # 404 Page
+│ │   └── components/
+│ │       └── ErrorMessage.jsx
 │ │
-│ ├── Hooks/ # Global reusable hooks
-│ │ ├── UseDebounce.js
-│ │ └── UseLocalStorage.js
+│ ├── services/            # Global API config
+│ │ ├── axios.js
+│ │ └── interceptors.js
 │ │
-│ ├── Utils/ # Helper functions
-│ │ ├── Validators.js
-│ │ ├── Constants.js
-│ │ └── Formatters.js
+│ ├── hooks/               # Global reusable hooks
+│ │ ├── useDebounce.js
+│ │ └── useLocalStorage.js
 │ │
-│ ├── Styles/ # Global styles
-│ │ ├── Globals.css
-│ │ └── Variables.css
+│ ├── utils/               # Helper functions
+│ │ ├── validators.js
+│ │ ├── constants.js
+│ │ └── formatters.js
 │ │
-│ ├── Index.js # Entry point
-│ └── Main.jsx (if Vite)
+│ ├── styles/              # Global styles
+│ │ ├── globals.css
+│ │ └── variables.css
+│ │
+│ ├── index.js             # Entry point
+│ └── main.jsx (if Vite)
 │
 ├── .env
 ├── .gitignore
