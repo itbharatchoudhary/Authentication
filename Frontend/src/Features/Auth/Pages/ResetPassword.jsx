@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthLayout from "../../../components/layout/AuthLayout.jsx";
-import AuthForm from "../components/AuthForm.jsx";
-import Input from "../../../components/ui/Input.jsx";
-import Button from "../../../components/ui/Button.jsx";
-import { useAuth } from "../hooks/useAuth.js";
-import { passwordStrength } from "../../../utils/validators.js";
-import { ROUTES } from "../../../utils/constants.js";
-import { useOtpStore } from "../../../app/store.js";
+import AuthLayout from "../../../Components/Layout/AuthLayout.jsx";
+import AuthForm from "../Components/AuthForm.jsx";
+import Input from "../../../Components/Ui/Input.jsx";
+import Button from "../../../Components/Ui/Button.jsx";
+import { useAuth } from "../Hooks/UseAuth.js";
+import { passwordStrength } from "../../../Utils/Validators.js";
+import { ROUTES } from "../../../Utils/Constants.js";
+import { useOtpStore } from "../../../App/Store.js";
 
 export default function ResetPassword() {
   const navigate = useNavigate();

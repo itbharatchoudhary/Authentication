@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { OTP_LENGTH } from "../../../utils/constants.js";
+import { OTP_LENGTH } from "../../../Utils/Constants";
 
 export default function OTPInput({
   value = "",

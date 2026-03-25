@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import AuthLayout from "../../../components/layout/AuthLayout.jsx";
-import AuthForm from "../components/AuthForm.jsx";
-import Input from "../../../components/ui/Input.jsx";
-import Button from "../../../components/ui/Button.jsx";
-import { useAuth } from "../hooks/useAuth.js";
-import { ROUTES } from "../../../utils/constants.js";
-import { isEmail } from "../../../utils/validators.js";
+import AuthLayout from "../../../Components/Layout/AuthLayout.jsx";
+import AuthForm from "../Components/AuthForm.jsx";
+import Input from "../../../Components/Ui/Input.jsx";
+import Button from "../../../Components/Ui/Button.jsx";
+import { useAuth } from "../Hooks/UseAuth.js";
+import { ROUTES } from "../../../Utils/Constants.js";
+import { isEmail } from "../../../Utils/Validators.js";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");

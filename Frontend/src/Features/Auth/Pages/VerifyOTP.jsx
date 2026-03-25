@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthLayout from "../../../components/layout/AuthLayout.jsx";
-import OTPInput from "../components/OTPInput.jsx";
-import Button from "../../../components/ui/Button.jsx";
-import { useAuth } from "../hooks/useAuth.js";
-import { otpTimer } from "../../../utils/formatters.js";
-import { OTP_RESEND_SECS, ROUTES } from "../../../utils/constants.js";
+import AuthLayout from "../../../Components/Layout/AuthLayout.jsx";
+import OTPInput from "../Components/OTPInput.jsx";
+import Button from "../../../Components/Ui/Button.jsx";
+import { useAuth } from "../Hooks/UseAuth.js";
+import { otpTimer } from "../../../Utils/Formatters.js";
+import { OTP_RESEND_SECS, ROUTES } from "../../../Utils/Constants.js";
 
 export default function VerifyOTP() {
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { useAuthStore, useOtpStore } from "../../../app/store.js";
-import * as authApi from "../services/auth.api.js";
-import { ROUTES, TOKEN_KEYS } from "../../../utils/constants.js";
+import { useAuthStore, useOtpStore } from "../../../App/Store.js";
+import * as authApi from "../Services/Auth.api.js";
+import { ROUTES, TOKEN_KEYS } from "../../../Utils/Constants.js";
 
 const err = (e) =>
   e?.response?.data?.message || e?.message || "Something went wrong";
