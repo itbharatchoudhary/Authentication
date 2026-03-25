@@ -111,3 +111,5 @@ Frontend/
 ├── .gitignore
 ├── package.json
 └── README.md
+
+npm install axios react-router-dom zustand

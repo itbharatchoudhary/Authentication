@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
+import AppRoutes from './routes.jsx';
+import Providers from './providers.jsx';
 
-const App = () => {
+export default function App() {
   return (
-    <div>
-        
-    </div>
-  )
+    <Providers>
+      <AppRoutes />
+    </Providers>
+  );
 }
-
-export default App
