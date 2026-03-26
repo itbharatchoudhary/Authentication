@@ -1,53 +1,25 @@
-src/
+Frontend/
 │
-├── app/                         # 1. App Layer
-│   ├── App.jsx
-│   ├── routes.jsx
-│   ├── providers/
-│   │   └── AuthProvider.jsx
-│   └── store/                  # (optional: Zustand/Redux)
-│       └── authStore.js
+├── public/
 │
-├── pages/                      # 2. Pages Layer
-│   ├── Entry/
-│   │   └── EntryPage.jsx
+├── src/
 │   │
-│   ├── Auth/
-│   │   ├── LoginPage.jsx
-│   │   └── RegisterPage.jsx
+│   ├── App/
+│   │   ├── App.jsx
+│   │   ├── Routes.jsx
 │   │
-│   ├── Home/
-│   │   └── HomePage.jsx
+│   ├── Pages/
+│   │   ├── EntryPage.jsx
 │   │
-│   ├── Profile/
-│   │   └── ProfilePage.jsx
+│   ├── components/        # (Reusable UI components - future use)
+│   │   ├── AuthLayout.jsx   
+│   │
+│   ├── assets/            # (Images, icons, fonts)
+│   │
+│   ├── styles/            # (Optional for extra CSS)
+│   │
+│   ├── index.css
+│   ├── main.jsx
 │
-├── features/                   # 3. Features Layer
-│   └── auth/
-│       ├── api.js              # login/register/logout API calls
-│       ├── authService.js      # business logic
-│       ├── authSlice.js        # (if using Redux)
-│       ├── hooks/
-│       │   └── useAuth.js
-│       └── components/
-│           ├── LoginForm.jsx
-│           ├── RegisterForm.jsx
-│           └── AuthGuard.jsx   # protected routes
-│
-├── shared/                     # 4. Shared Layer
-│   ├── components/
-│   │   ├── Button.jsx
-│   │   ├── Input.jsx
-│   │   └── Loader.jsx
-│   │
-│   ├── lib/
-│   │   └── axios.js            # API base config
-│   │
-│   ├── utils/
-│   │   └── validators.js
-│   │
-│   └── constants/
-│       └── routes.js
-│
-└── assets/
-    └── images/
+├── package.json
+├── vite.config.js
