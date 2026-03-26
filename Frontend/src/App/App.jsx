@@ -1,13 +1,8 @@
-import React from 'react'
-import EntryPage from '../Pages/EntryPage'
+import React from "react";
+import AppRoutes from "./Routes";
 
 const App = () => {
-  return (
-    <div>
-      <EntryPage/>
-      
-    </div>
-  )
-}
+  return <AppRoutes />;
+};
 
-export default App
+export default App;

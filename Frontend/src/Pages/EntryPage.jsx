@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import AuthLayout from "../Components/AuthLayout";
 
 const EntryPage = () => {
+  const navigate = useNavigate();
+
   return (
     <AuthLayout>
       <div className="flex flex-col justify-center items-start min-h-screen px-7 md:px-10 max-w-2xl transition-all duration-1000 ease-out">
@@ -21,11 +25,17 @@ const EntryPage = () => {
 
       {/* BUTTONS */}
       <div className="absolute bottom-10 right-10 flex gap-4 transition-all duration-1000">
-        <button className="px-2 py-1 rounded-full bg-gray-400/50 text-black hover:bg-white/90 transform hover:scale-105 transition duration-300">
+        <button
+          className="px-2 py-1 rounded-full bg-gray-400/50 text-black hover:bg-white/90 transform hover:scale-105 transition duration-300"
+          onClick={() => navigate("/register")}
+        >
           Get Started
         </button>
 
-        <button className="px-4 py-2 rounded-full bg-white text-black hover:bg-gray-200 transform hover:scale-105 transition duration-300">
+        <button
+          className="px-4 py-2 rounded-full bg-white text-black hover:bg-gray-200 transform hover:scale-105 transition duration-300"
+          onClick={() => navigate("/login")}
+        >
           Login
         </button>
       </div>

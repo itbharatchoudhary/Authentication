@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthLayout = ({ children }) => {
+  const navigate = useNavigate();
   const [time, setTime] = useState(new Date());
   const [show, setShow] = useState(false);
 
@@ -34,7 +36,9 @@ const AuthLayout = ({ children }) => {
 
       {/* NAV */}
       <div className="absolute top-0 left-0 w-full flex justify-between items-center px-6 md:px-10 py-4 z-20">
-        <p className="text-sm text-gray-400">THEGAMEUNTOLD</p>
+        <p className="text-sm text-gray-400 cursor-pointer" onClick={() => navigate("/")}>
+          THEGAMEUNTOLD
+        </p>
 
         <h6 className="text-sm text-gray-400 tracking-wide">
           {time
