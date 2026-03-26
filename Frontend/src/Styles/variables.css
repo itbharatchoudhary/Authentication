@@ -2,38 +2,43 @@
    ROOT (Light Theme Default)
    ========================= */
 :root {
-  /* Colors */
-  --color-bg: #ffffff;
-  --color-surface: #f9fafb;
-  --color-card: #ffffff;
+  /* =========================
+     CALM WHITE-GRAY THEME
+     ========================= */
 
-  --color-text: #111827;
-  --color-text-secondary: #6b7280;
+  /* Backgrounds (warm gray, not pure white) */
+  --color-bg: #f3f4f6;            /* main background */
+  --color-surface: #eef0f2;       /* layered surface */
+  --color-card: #ffffffcc;        /* soft white (80% opacity) */
 
-  --color-border: #e5e7eb;
+  /* Text (reduced contrast for eye comfort) */
+  --color-text: #2d2f33;          /* softer than black */
+  --color-text-secondary: #7a7f87;
 
-  /* Brand */
-  --color-primary: #6366f1;
-  --color-primary-hover: #4f46e5;
+  /* Borders (barely visible) */
+  --color-border: #e4e6eb;
 
-  --color-accent: #22c55e;
-  --color-danger: #ef4444;
+  /* Brand (slightly muted) */
+  --color-primary: #5b5fc7;       /* toned-down indigo */
+  --color-primary-hover: #4c50b8;
 
-  /* Effects */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
+  --color-accent: #4caf7a;        /* softer green */
+  --color-danger: #e35d5d;        /* less aggressive red */
+
+  /* Shadows (very subtle) */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 3px 8px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 6px 18px rgba(0, 0, 0, 0.06);
 
   /* Radius */
   --radius-sm: 6px;
   --radius-md: 12px;
-  --radius-lg: 20px;
+  --radius-lg: 18px;
 
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
 }
-
 /* =========================
    DARK THEME
    ========================= */
