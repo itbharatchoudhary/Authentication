@@ -1,7 +1,12 @@
 import React from 'react'
+import EntryPage from '../Pages/EntryPage'
 
-export const App = () => {
+const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <EntryPage/>
+    </div>
   )
 }
+
+export default App
