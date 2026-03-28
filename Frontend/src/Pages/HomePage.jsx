@@ -46,15 +46,13 @@ const HomePage = ({ toggleTheme, dark }) => {
     };
 
     setMessages((prev) => [newMessage, ...prev]);
-
     setMessage("");
     setOpen(false);
   };
 
   return (
     <div className="w-full" style={{ background: "var(--color-bg)" }}>
-      {/* Section Of introduction And input */}
-
+      {/* Hero Section */}
       <div className="relative w-full h-screen overflow-hidden">
         {/* Background Image */}
         <div
@@ -63,8 +61,6 @@ const HomePage = ({ toggleTheme, dark }) => {
             backgroundImage: "url('Background.jpg')",
           }}
         >
-          {/*Background.jpg */}
-          {/* Overlay */}
           <div className="absolute inset-0"></div>
         </div>
 
@@ -92,12 +88,6 @@ const HomePage = ({ toggleTheme, dark }) => {
               background: "var(--color-primary)",
               color: "#fff",
             }}
-            onMouseEnter={(e) =>
-              (e.target.style.background = "var(--color-primary-hover)")
-            }
-            onMouseLeave={(e) =>
-              (e.target.style.background = "var(--color-primary)")
-            }
           >
             Create Message
           </button>
@@ -119,9 +109,7 @@ const HomePage = ({ toggleTheme, dark }) => {
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-green-400/20 rounded-full blur-2xl"></div>
 
               <div className="relative z-10">
-                <h2 className="text-2xl font-semibold mb-4">
-                  Write Your Message
-                </h2>
+                <h2 className="text-2xl font-semibold mb-4">Write Your Message</h2>
 
                 <textarea
                   value={message}
@@ -154,12 +142,6 @@ const HomePage = ({ toggleTheme, dark }) => {
                       background: "var(--color-primary)",
                       color: "#fff",
                     }}
-                    onMouseEnter={(e) =>
-                      (e.target.style.background = "var(--color-primary-hover)")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.target.style.background = "var(--color-primary)")
-                    }
                   >
                     Post
                   </button>
@@ -170,21 +152,13 @@ const HomePage = ({ toggleTheme, dark }) => {
         )}
       </div>
 
-      {/* Section of User opinion */}
-
-      <div
-        className="px-3 md:px-12 py-12"
-        style={{ background: "var(--color-surface)" }}
-      >
+      {/* User Opinions Section */}
+      <div className="px-3 md:px-12 py-12" style={{ background: "var(--color-surface)" }}>
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2
-            className="text-3xl md:text-4xl font-bold"
-            style={{ color: "var(--color-text)" }}
-          >
+          <h2 className="text-3xl md:text-4xl font-bold" style={{ color: "var(--color-text)" }}>
             User Opinions on Authentication
           </h2>
-
           <p className="mt-3" style={{ color: "var(--color-text-secondary)" }}>
             See what developers are saying about authentication systems
           </p>
