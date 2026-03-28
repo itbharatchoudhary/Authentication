@@ -7,16 +7,16 @@
      ========================= */
 
   /* Backgrounds (warm gray, not pure white) */
-  --color-bg: #f3f4f6;            /* main background */
-  --color-surface: #eef0f2;       /* layered surface */
-  --color-card: #ffffffcc;        /* soft white (80% opacity) */
+  --color-bg: #b0b0b1;            /* main background */
+  --color-surface: #c5c1c1;       /* layered surface */
+  --color-card: #e3e3e3;        /* soft white (80% opacity) */
 
   /* Text (reduced contrast for eye comfort) */
   --color-text: #0f0f0f;          /* softer than black */
   --color-text-secondary: #7a7f87;
 
   /* Borders (barely visible) */
-  --color-border: #e4e6eb;
+  --color-border: #adadad;
 
   /* Brand (slightly muted) */
   --color-primary: #5b5fc7;       /* toned-down indigo */

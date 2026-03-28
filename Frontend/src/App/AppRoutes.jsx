@@ -15,8 +15,8 @@ const AppRoutes = () => {
 
   return (
     <BrowserRouter>
-      {/* {isLoggedIn && <Navbar dark={dark} toggleTheme={toggleTheme} />} */}
-      <Navbar dark={dark} toggleTheme={toggleTheme} />
+      {isLoggedIn && <Navbar dark={dark} toggleTheme={toggleTheme} />}
+      {/* <Navbar dark={dark} toggleTheme={toggleTheme} /> */}
 
       <Routes>
         <Route
@@ -34,17 +34,17 @@ const AppRoutes = () => {
 
         <Route
           path="/home"
-          element={<HomePage />}
-          // element={isLoggedIn ? <HomePage /> : <Navigate to="/" />}
+          // element={<HomePage />}
+          element={isLoggedIn ? <HomePage /> : <Navigate to="/" />}
         />
         <Route
           path="/profile"
-           element={<ProfilePage />}
-          // element={isLoggedIn ? <ProfilePage /> : <Navigate to="/" />}
+          //  element={<ProfilePage />}
+          element={isLoggedIn ? <ProfilePage /> : <Navigate to="/" />}
         />
       </Routes>
-      <Footer />
-      {/* {isLoggedIn && <Footer />} */}
+      {/* <Footer /> */}
+      {isLoggedIn && <Footer />}
     </BrowserRouter>
   );
 };
