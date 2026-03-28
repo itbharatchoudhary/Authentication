@@ -1,3 +1,7 @@
 @import "./variables.css";
 @import "tailwindcss";
 
+.theme-image {
+  filter: brightness(var(--image-brightness));
+  transition: filter 0.3s ease;
+}

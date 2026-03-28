@@ -29,7 +29,7 @@ const ProfileCard = () => {
         <img
           src={user.coverPhoto}
           alt="Cover"
-          className="w-full h-full object-cover brightness-75"
+          className="w-full theme-image h-full object-cover brightness-75"
         />
         {/* Avatar */}
         <div

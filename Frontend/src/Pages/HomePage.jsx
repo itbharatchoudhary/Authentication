@@ -56,7 +56,7 @@ const HomePage = ({ toggleTheme, dark }) => {
       <div className="relative w-full h-screen overflow-hidden">
         {/* Background Image */}
         <div
-          className="absolute inset-0 bg-cover bg-center m-10 rounded-4xl mt-20"
+          className="absolute theme-image inset-0 bg-cover bg-center m-10 rounded-4xl mt-20"
           style={{
             backgroundImage: "url('Background.jpg')",
           }}
