@@ -5,6 +5,7 @@ import EntryPage from "../Pages/EntryPage";
 import Login from "../Pages/LoginPage";
 import Register from "../Pages/RegisterPage";
 import HomePage from "../Pages/HomePage";
+import ProfilePage from "../Pages/ProfilePage";
 
 const AppRoutes = () => {
   const [dark, setDark] = useState(() => {
@@ -48,6 +49,11 @@ const AppRoutes = () => {
         <Route
           path="/home"
           element={<HomePage toggleTheme={toggleTheme} dark={dark} />}
+        />
+
+        <Route
+          path="/profile"
+          element={<ProfilePage dark={dark} toggleTheme={toggleTheme} />}
         />
       </Routes>
     </BrowserRouter>
