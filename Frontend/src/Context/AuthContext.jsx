@@ -1,39 +1,83 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { loginUser, registerUser } from "../Services/AuthService";
 
-// Create Context
 const AuthContext = createContext();
-
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // user login state
-  const [dark, setDark] = useState(false);             // theme state
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [dark, setDark] = useState(false);
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
 
-  // Load theme from localStorage
+  // Load from localStorage
+  useEffect(() => {
+    const savedToken = localStorage.getItem("token");
+    const savedUser = localStorage.getItem("user");
+
+    if (savedToken) {
+      setIsLoggedIn(true);
+      setToken(savedToken);
+    }
+
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, []);
+
+  // Theme
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     setDark(savedTheme === "dark");
   }, []);
 
-  // Apply theme globally
   useEffect(() => {
     const root = document.documentElement;
-    if (dark) root.classList.add("dark");
-    else root.classList.remove("dark");
+    dark ? root.classList.add("dark") : root.classList.remove("dark");
   }, [dark]);
 
   const toggleTheme = () => {
-    setDark(prev => {
+    setDark((prev) => {
       localStorage.setItem("theme", !prev ? "dark" : "light");
       return !prev;
     });
   };
 
-  const login = () => setIsLoggedIn(true);
-  const logout = () => setIsLoggedIn(false);
+  // 🔐 LOGIN
+  const login = async (formData) => {
+    const data = await loginUser(formData);
+
+    setUser(data.user);
+    setToken(data.token);
+    setIsLoggedIn(true);
+
+    localStorage.setItem("token", data.token);
+  };
+
+  const register = async (formData) => {
+    return await registerUser(formData);
+  };
+
+  const logout = () => {
+    setUser(null);
+    setToken(null);
+    setIsLoggedIn(false);
+    localStorage.removeItem("token");
+  };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout, dark, toggleTheme }}>
+    <AuthContext.Provider
+      value={{
+        isLoggedIn,
+        login,
+        register,
+        logout,
+        user,
+        token,
+        dark,
+        toggleTheme,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

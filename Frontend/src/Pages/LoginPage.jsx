@@ -1,14 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../Context/AuthContext";
 import AuthLayout from "../../Components/AuthLayout";
-import { Link } from "react-router-dom";
 
 const Login = () => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
   return (
     <AuthLayout>
-      <div className="flex items-center justify-center min-h-screen px-6 pt-10"
-           style={{ backgroundColor: "var(--color-bg)" }}>
+      <div
+        className="flex items-center justify-center min-h-screen px-6 pt-10"
+        style={{ backgroundColor: "var(--color-bg)" }}
+      >
+        <form
+          onSubmit={async (e) => {
+            e.preventDefault();
 
-        <div
+            if (!formData.email || !formData.password) {
+              alert("Please fill all fields");
+              return;
+            }
+
+            try {
+              await login(formData);
+              navigate("/home");
+            } catch (err) {
+              alert(err.message);
+            }
+          }}
           className="w-full max-w-md rounded-2xl p-8 border"
           style={{
             backgroundColor: "var(--color-card)",
@@ -28,6 +53,10 @@ const Login = () => {
           <input
             type="email"
             placeholder="Email"
+            value={formData.email}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
             className="w-full mb-4 px-4 py-3 rounded-lg focus:outline-none transition"
             style={{
               backgroundColor: "var(--color-surface)",
@@ -40,6 +69,9 @@ const Login = () => {
           <input
             type="password"
             placeholder="Password"
+            onChange={(e) =>
+              setFormData({ ...formData, password: e.target.value })
+            }
             className="w-full mb-6 px-4 py-3 rounded-lg focus:outline-none transition"
             style={{
               backgroundColor: "var(--color-surface)",
@@ -50,6 +82,7 @@ const Login = () => {
 
           {/* LOGIN BUTTON */}
           <button
+            type="submit"
             className="w-full py-3 rounded-lg font-medium transition duration-300"
             style={{
               backgroundColor: "var(--color-primary)",
@@ -103,7 +136,7 @@ const Login = () => {
               Register
             </Link>
           </p>
-        </div>
+        </form>
       </div>
     </AuthLayout>
   );
