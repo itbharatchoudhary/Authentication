@@ -21,21 +21,21 @@ const AuthLayout = ({ children }) => {
   }, []);
 
   // 🌗 Load Theme
-  useEffect(() => {
+ useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme === "dark") {
-      document.documentElement.setAttribute("data-theme", "dark");
+      document.documentElement.classList.add("dark");
       setDark(true);
     }
-  }, []);
+  }, []);;
 
   // 🔄 Toggle Theme
-  const toggleTheme = () => {
+   const toggleTheme = () => {
     if (dark) {
-      document.documentElement.removeAttribute("data-theme");
+      document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "light");
     } else {
-      document.documentElement.setAttribute("data-theme", "dark");
+      document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
     }
     setDark(!dark);
@@ -97,7 +97,7 @@ const AuthLayout = ({ children }) => {
           </button>
         </div>
       </div>
-
+    
       {/* 📦 PAGE CONTENT */}
       <div
         className={`relative z-10 transition-all duration-700 ease-out transform
