@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../Context/AuthContext"; // <-- Import AuthContext
 
-const Navbar = ({ toggleTheme, dark }) => {
+const Navbar = () => {
   const navigate = useNavigate();
+  const { dark, toggleTheme } = useAuth(); // <-- Use global theme from context
   const [time, setTime] = useState(new Date());
 
   // Update time every minute
@@ -17,7 +19,6 @@ const Navbar = ({ toggleTheme, dark }) => {
                  bg-[var(--color-bg)] border-b border-[var(--color-border)] shadow-[var(--shadow-sm)]
                  backdrop-blur-md"
     >
-      
       {/* LOGO */}
       <p
         className="text-sm font-medium tracking-widest text-[var(--color-text-secondary)] 
@@ -29,7 +30,6 @@ const Navbar = ({ toggleTheme, dark }) => {
 
       {/* RIGHT SIDE */}
       <div className="flex items-center gap-4">
-
         {/* TIME */}
         <h6 className="text-xs md:text-sm text-[var(--color-text-secondary)]">
           {time
@@ -72,7 +72,6 @@ const Navbar = ({ toggleTheme, dark }) => {
             className="w-full h-full object-cover"
           />
         </div>
-
       </div>
     </div>
   );
