@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import AuthLayout from "../Components/AuthLayout";
+import AuthLayout from "../../Components/AuthLayout";
 
 const EntryPage = () => {
   const navigate = useNavigate();

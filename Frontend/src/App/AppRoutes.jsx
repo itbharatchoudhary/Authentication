@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
 
-import EntryPage from "../Pages/EntryPage";
-import LoginPage from "../Pages/LoginPage";
-import RegisterPage from "../Pages/RegisterPage";
-import HomePage from "../Pages/HomePage";
-import ProfilePage from "../Pages/ProfilePage";
+import EntryPage from "../Presentation/Pages/EntryPage";
+import LoginPage from "../Presentation/Pages/LoginPage";
+import RegisterPage from "../Presentation/Pages/RegisterPage";
+import HomePage from "../Presentation/Pages/HomePage";
+import ProfilePage from "../Presentation/Pages/ProfilePage";
 
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";

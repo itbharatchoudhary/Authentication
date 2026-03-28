@@ -1,6 +1,6 @@
 import React from 'react'
-import ProfileCard from '../Components/ProfileCard'
-import History from '../Components/History'
+import ProfileCard from '../../Components/ProfileCard'
+import History from '../../Components/History'
 
 const ProfilePage = () => {
   return (

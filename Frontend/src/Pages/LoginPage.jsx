@@ -1,5 +1,5 @@
 import React from "react";
-import AuthLayout from "../Components/AuthLayout";
+import AuthLayout from "../../Components/AuthLayout";
 import { Link } from "react-router-dom";
 
 const Login = () => {
