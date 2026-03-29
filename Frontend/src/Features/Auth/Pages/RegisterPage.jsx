@@ -27,7 +27,9 @@ const Register = () => {
     try {
       await register(formData);
       alert("Registered successfully");
-      navigate("/login");
+      navigate("/verify-otp", {
+        state: { email: formData.email },
+      });
     } catch (err) {
       alert(err.message);
     }
@@ -101,7 +103,7 @@ const Register = () => {
 
           {/* REGISTER BUTTON */}
           <button
-             type="submit"
+            type="submit"
             className="w-full py-3 rounded-lg font-medium transition duration-300 bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover)]"
           >
             Register

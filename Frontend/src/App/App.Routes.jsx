@@ -6,6 +6,7 @@ import LoginPage from "../Features/Auth/Pages/LoginPage";
 import RegisterPage from "../Features/Auth/Pages/RegisterPage";
 import HomePage from "../Features/Home/Pages/HomePage";
 import ProfilePage from "../Features/Home/Pages/ProfilePage";
+import VerifyOtpPage from "../Features/Auth/Pages/VerifyOtpPage";
 
 import Navbar from "../Features/Home/Components/Navbar";
 import Footer from "../Features/Home/Components/Footer";
@@ -31,6 +32,8 @@ const AppRoutes = () => {
           path="/register"
           element={isLoggedIn ? <Navigate to="/home" /> : <RegisterPage />}
         />
+
+        <Route path="/verify-otp" element={<VerifyOtpPage />} />
 
         <Route
           path="/home"
