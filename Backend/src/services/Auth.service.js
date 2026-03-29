@@ -46,9 +46,7 @@ export const verifyRegistrationOtp = async ({ email, otp }, { userAgent, ip }) =
   return { accessToken, refreshToken, user };
 };
 
-// ─── Google OAuth ─────────────────────────────────────────────────────────────
 
-import axios from "axios";
 
 export const googleLogin = async (accessToken, { userAgent, ip }) => {
   //  Get user info from Google using access_token

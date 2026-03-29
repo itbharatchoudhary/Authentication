@@ -68,9 +68,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   // 🔐 GOOGLE LOGIN
-  const loginWithGoogle = async (idToken) => {
+  const loginWithGoogle = async (access_token) => {
     const data = await apiRequest("/auth/google", "POST", {
-      idToken,
+      access_token,
     });
 
     setUser(data.user);
@@ -86,7 +86,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         isLoggedIn,
         login,
-        loginWithGoogle, 
+        loginWithGoogle,
         register,
         logout,
         user,

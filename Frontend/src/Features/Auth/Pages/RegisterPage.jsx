@@ -36,10 +36,9 @@ const Register = () => {
     }
   };
 
-  const handleGoogleSignup = useGoogleLogin({
+  const googleSignup = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       try {
-        // Send access_token to backend OR exchange for idToken (depends on backend)
         await loginWithGoogle(tokenResponse.access_token);
         alert("Google signup successful!");
         navigate("/home");
@@ -135,17 +134,16 @@ const Register = () => {
             <div className="flex-1 h-px bg-[var(--color-border)]"></div>
           </div>
 
-          {/* GOOGLE SIGNUP */}
           <button
             type="button"
-            onClick={() => handleGoogleSignup()}
+            onClick={() => googleSignup()}
             className="w-full py-3 rounded-lg font-medium transition duration-300
-    bg-[var(--color-surface)] 
-    text-[var(--color-text)] 
-    border border-[var(--color-border)] 
-    hover:bg-[var(--color-border)]"
+  bg-[var(--color-surface)] 
+  text-[var(--color-text)] 
+  border border-[var(--color-border)] 
+  hover:bg-[var(--color-border)]"
           >
-            Sign up with Google
+            Continue with Google
           </button>
 
           {/* SWITCH */}
