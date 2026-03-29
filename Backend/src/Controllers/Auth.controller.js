@@ -1,5 +1,8 @@
 import * as authService from "../Services/Auth.service.js";
-import { rotateRefreshToken, revokeSession } from "../Services/Token.service.js";
+import {
+  rotateRefreshToken,
+  revokeSession,
+} from "../Services/Token.service.js";
 import logger from "../utils/logger.js";
 
 const getMeta = (req) => ({
@@ -22,7 +25,10 @@ export const register = async (req, res, next) => {
 export const verifyEmail = async (req, res, next) => {
   try {
     const { email, otp } = req.body;
-    const result = await authService.verifyRegistrationOtp({ email, otp }, getMeta(req));
+    const result = await authService.verifyRegistrationOtp(
+      { email, otp },
+      getMeta(req),
+    );
     res.status(200).json({ success: true, ...result });
   } catch (err) {
     next(err);
@@ -32,8 +38,8 @@ export const verifyEmail = async (req, res, next) => {
 // POST /api/auth/google
 export const googleAuth = async (req, res, next) => {
   try {
-    const { idToken } = req.body;
-    const result = await authService.googleLogin(idToken, getMeta(req));
+    const { access_token } = req.body;
+    const result = await authService.googleLogin(access_token, getMeta(req));
     res.status(200).json({ success: true, ...result });
   } catch (err) {
     next(err);
@@ -44,7 +50,10 @@ export const googleAuth = async (req, res, next) => {
 export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    const result = await authService.loginUser({ email, password }, getMeta(req));
+    const result = await authService.loginUser(
+      { email, password },
+      getMeta(req),
+    );
     res.status(200).json({ success: true, ...result });
   } catch (err) {
     next(err);
@@ -55,7 +64,10 @@ export const login = async (req, res, next) => {
 export const refreshToken = async (req, res, next) => {
   try {
     const { refreshToken } = req.body;
-    if (!refreshToken) return res.status(400).json({ success: false, message: "Refresh token required" });
+    if (!refreshToken)
+      return res
+        .status(400)
+        .json({ success: false, message: "Refresh token required" });
 
     const result = await rotateRefreshToken({
       oldRefreshToken: refreshToken,

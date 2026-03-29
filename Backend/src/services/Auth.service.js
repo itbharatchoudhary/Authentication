@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   findUserByEmail,
   createLocalUser,
@@ -47,22 +48,48 @@ export const verifyRegistrationOtp = async ({ email, otp }, { userAgent, ip }) =
 
 // ─── Google OAuth ─────────────────────────────────────────────────────────────
 
-export const googleLogin = async (idToken, { userAgent, ip }) => {
-  const googlePayload = await verifyGoogleToken(idToken);
-  const { sub: googleId, email, name, picture } = googlePayload;
+import axios from "axios";
+
+export const googleLogin = async (accessToken, { userAgent, ip }) => {
+  //  Get user info from Google using access_token
+  const googleRes = await axios.get(
+    "https://www.googleapis.com/oauth2/v3/userinfo",
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+
+  const { sub: googleId, email, name, picture } = googleRes.data;
 
   let user = await findUserByEmail(email);
 
   if (!user) {
-    user = await createGoogleUser({ googleId, name, email, avatar: picture });
+    user = await createGoogleUser({
+      googleId,
+      name,
+      email,
+      avatar: picture,
+    });
   }
 
   const payload = { sub: user._id, role: user.role };
-  const accessToken = generateAccessToken(payload);
+  const accessTokenJWT = generateAccessToken(payload);
   const refreshToken = generateRefreshToken(payload);
-  await saveSession({ userId: user._id, refreshToken, userAgent, ip });
 
-  return { accessToken, refreshToken, user };
+  await saveSession({
+    userId: user._id,
+    refreshToken,
+    userAgent,
+    ip,
+  });
+
+  return {
+    accessToken: accessTokenJWT,
+    refreshToken,
+    user,
+  };
 };
 
 // ─── Manual Login ─────────────────────────────────────────────────────────────
