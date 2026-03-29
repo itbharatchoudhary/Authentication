@@ -5,6 +5,7 @@ import AuthLayout from "../Components/AuthLayout";
 import { useAuth } from "../Context/AuthContext";
 
 const Register = () => {
+  const [loading, setLoading] = useState(false);
   const { register, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -26,13 +27,16 @@ const Register = () => {
     }
 
     try {
+      setLoading(true);
       await register(formData);
-      alert("Registered successfully");
+
       navigate("/verify-otp", {
         state: { email: formData.email },
       });
     } catch (err) {
       alert(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -40,7 +44,6 @@ const Register = () => {
     onSuccess: async (tokenResponse) => {
       try {
         await loginWithGoogle(tokenResponse.access_token);
-        alert("Google signup successful!");
         navigate("/home");
       } catch (err) {
         alert(err.message);
@@ -120,10 +123,23 @@ const Register = () => {
           {/* REGISTER BUTTON */}
           <button
             type="submit"
-            className="w-full py-3 rounded-lg font-medium transition duration-300 bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover)]"
+            disabled={loading}
+            className="w-full py-3 rounded-lg font-medium transition duration-300 bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover)] disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            Register
+            {loading ? "Registering..." : "Register"}
           </button>
+
+          {loading && (
+            <div className="flex flex-col items-center mt-4 gap-2">
+              {/* Spinner */}
+              <div className="w-5 h-5 border-2 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin"></div>
+
+              {/* Message */}
+              <p className="text-sm text-center text-[var(--color-text-secondary)]">
+                Creating your account... Please wait 📩
+              </p>
+            </div>
+          )}
 
           {/* DIVIDER */}
           <div className="flex items-center my-6">

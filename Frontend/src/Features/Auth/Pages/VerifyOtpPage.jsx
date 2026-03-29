@@ -23,7 +23,7 @@ const VerifyOtpPage = () => {
 
       await apiRequest("/auth/verify-email", "POST", { email, otp });
 
-      alert("OTP Verified Successfully");
+      // alert("OTP Verified Successfully");
       navigate("/login");
     } catch (err) {
       alert(err.message);
