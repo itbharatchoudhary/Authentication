@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { GoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
 import { useAuth } from "../Context/AuthContext";
 import AuthLayout from "../Components/AuthLayout";
 
@@ -11,6 +11,20 @@ const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+  });
+
+  const googleLogin = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      try {
+        await loginWithGoogle(tokenResponse.access_token);
+        navigate("/home");
+      } catch (err) {
+        alert(err.message);
+      }
+    },
+    onError: () => {
+      alert("Google login failed");
+    },
   });
 
   return (
@@ -111,36 +125,18 @@ const Login = () => {
             ></div>
           </div>
 
-          {/* GOOGLE LOGIN */}
-          <GoogleLogin
-            onSuccess={async (credentialResponse) => {
-              try {
-                await loginWithGoogle(credentialResponse.credential);
-                navigate("/home");
-              } catch (err) {
-                alert(err.message);
-              }
+          <button
+            type="button"
+            onClick={() => googleLogin()}
+            className="w-full py-3 rounded-lg font-medium transition duration-300 border"
+            style={{
+              backgroundColor: "transparent",
+              borderColor: "var(--color-border)",
+              color: "var(--color-text)",
             }}
-            onError={() => {
-              alert("Google login failed");
-            }}
-            useOneTap
-            render={({ onClick, disabled }) => (
-              <button
-                type="button"
-                onClick={onClick}
-                disabled={disabled}
-                className="w-full py-3 rounded-lg font-medium transition duration-300 border"
-                style={{
-                  backgroundColor: "transparent",
-                  borderColor: "var(--color-border)",
-                  color: "var(--color-text)",
-                }}
-              >
-                Continue with Google
-              </button>
-            )}
-          />
+          >
+            Continue with Google
+          </button>
 
           {/* SWITCH */}
           <p

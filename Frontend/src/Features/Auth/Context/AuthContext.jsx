@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { loginUser, registerUser } from "../Services/AuthService";
+import { apiRequest } from "../Services/Auth.Api";
 
 const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
@@ -44,16 +45,16 @@ export const AuthProvider = ({ children }) => {
   };
 
   // 🔐 LOGIN
-const login = async (formData) => {
-  const data = await loginUser(formData);
+  const login = async (formData) => {
+    const data = await loginUser(formData);
 
-  setUser(data.user);
-  setToken(data.accessToken);
-  setIsLoggedIn(true);
+    setUser(data.user);
+    setToken(data.accessToken);
+    setIsLoggedIn(true);
 
-  localStorage.setItem("token", data.accessToken);
-  localStorage.setItem("user", JSON.stringify(data.user));
-};
+    localStorage.setItem("token", data.accessToken);
+    localStorage.setItem("user", JSON.stringify(data.user));
+  };
 
   const register = async (formData) => {
     return await registerUser(formData);
@@ -66,11 +67,26 @@ const login = async (formData) => {
     localStorage.removeItem("token");
   };
 
+  // 🔐 GOOGLE LOGIN
+  const loginWithGoogle = async (idToken) => {
+    const data = await apiRequest("/auth/google", "POST", {
+      idToken,
+    });
+
+    setUser(data.user);
+    setToken(data.accessToken);
+    setIsLoggedIn(true);
+
+    localStorage.setItem("token", data.accessToken);
+    localStorage.setItem("user", JSON.stringify(data.user));
+  };
+
   return (
     <AuthContext.Provider
       value={{
         isLoggedIn,
         login,
+        loginWithGoogle, 
         register,
         logout,
         user,
