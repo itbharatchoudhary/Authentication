@@ -5,7 +5,7 @@ import { AuthProvider } from "../Features/Auth/Context/AuthContext.jsx";
 const App = () => {
   return (
     <AuthProvider>
-      <AppRoutes />
+        <AppRoutes />
     </AuthProvider>
   );
 };

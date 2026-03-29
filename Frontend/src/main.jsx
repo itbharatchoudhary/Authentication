@@ -1,12 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { StrictMode } from "react";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { createRoot } from "react-dom/client";
+import App from "./App/App.jsx";
 import "remixicon/fonts/remixicon.css";
-import "./Styles/index.css"
-import App from './App/App.jsx'
+import "./Styles/index.css";
 
-createRoot(document.getElementById('root')).render(
+const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
-
+    <GoogleOAuthProvider clientId={clientId}>
+      <App />
+    </GoogleOAuthProvider>
+  </StrictMode>
+);
