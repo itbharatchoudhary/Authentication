@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useAuth } from "../Context/AuthContext";
+import { useAuth } from "../Features/Auth/Context/AuthContext";
 
-import EntryPage from "../Presentation/Pages/EntryPage";
-import LoginPage from "../Presentation/Pages/LoginPage";
-import RegisterPage from "../Presentation/Pages/RegisterPage";
-import HomePage from "../Presentation/Pages/HomePage";
-import ProfilePage from "../Presentation/Pages/ProfilePage";
+import EntryPage from "../Features/Auth/Pages/EntryPage";
+import LoginPage from "../Features/Auth/Pages/LoginPage";
+import RegisterPage from "../Features/Auth/Pages/RegisterPage";
+import HomePage from "../Features/Home/Pages/HomePage";
+import ProfilePage from "../Features/Home/Pages/ProfilePage";
 
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
+import Navbar from "../Features/Home/Components/Navbar";
+import Footer from "../Features/Home/Components/Footer";
 
 const AppRoutes = () => {
   const { isLoggedIn, dark, toggleTheme } = useAuth();

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../Context/AuthContext"; // <-- Import AuthContext
-
+import { useAuth } from "../../Auth/Context/AuthContext"; // 
 const Navbar = () => {
   const navigate = useNavigate();
   const { dark, toggleTheme } = useAuth(); // <-- Use global theme from context

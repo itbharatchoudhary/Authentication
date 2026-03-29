@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MessageCard from "../../Components/MessageCard";
+import MessageCard from "../Components/MessageCard";
 
 const HomePage = ({ toggleTheme, dark }) => {
   const [open, setOpen] = useState(false);

@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { loginUser, registerUser } from "../Features/Auth/Services/AuthService";
+import { loginUser, registerUser } from "../Services/AuthService";
 
 const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
@@ -44,15 +44,16 @@ export const AuthProvider = ({ children }) => {
   };
 
   // 🔐 LOGIN
-  const login = async (formData) => {
-    const data = await loginUser(formData);
+const login = async (formData) => {
+  const data = await loginUser(formData);
 
-    setUser(data.user);
-    setToken(data.token);
-    setIsLoggedIn(true);
+  setUser(data.user);
+  setToken(data.accessToken);
+  setIsLoggedIn(true);
 
-    localStorage.setItem("token", data.token);
-  };
+  localStorage.setItem("token", data.accessToken);
+  localStorage.setItem("user", JSON.stringify(data.user));
+};
 
   const register = async (formData) => {
     return await registerUser(formData);
