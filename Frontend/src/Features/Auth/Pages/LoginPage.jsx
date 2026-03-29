@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
 import { useAuth } from "../Context/AuthContext";
 import AuthLayout from "../Components/AuthLayout";
 
 const Login = () => {
-  const { login } = useAuth();
+  const { login, loginWithGoogle } = useAuth(); // added Google login
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -111,16 +112,35 @@ const Login = () => {
           </div>
 
           {/* GOOGLE LOGIN */}
-          <button
-            className="w-full py-3 rounded-lg font-medium transition duration-300 border"
-            style={{
-              backgroundColor: "transparent",
-              borderColor: "var(--color-border)",
-              color: "var(--color-text)",
+          <GoogleLogin
+            onSuccess={async (credentialResponse) => {
+              try {
+                await loginWithGoogle(credentialResponse.credential);
+                navigate("/home");
+              } catch (err) {
+                alert(err.message);
+              }
             }}
-          >
-            Continue with Google
-          </button>
+            onError={() => {
+              alert("Google login failed");
+            }}
+            useOneTap
+            render={({ onClick, disabled }) => (
+              <button
+                type="button"
+                onClick={onClick}
+                disabled={disabled}
+                className="w-full py-3 rounded-lg font-medium transition duration-300 border"
+                style={{
+                  backgroundColor: "transparent",
+                  borderColor: "var(--color-border)",
+                  color: "var(--color-text)",
+                }}
+              >
+                Continue with Google
+              </button>
+            )}
+          />
 
           {/* SWITCH */}
           <p

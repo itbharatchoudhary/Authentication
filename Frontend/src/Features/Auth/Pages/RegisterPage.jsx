@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
 import AuthLayout from "../Components/AuthLayout";
 import { useAuth } from "../Context/AuthContext";
 
 const Register = () => {
-  const { register } = useAuth();
+  const { register, registerWithGoogle } = useAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -119,15 +120,35 @@ const Register = () => {
           </div>
 
           {/* GOOGLE SIGNUP */}
-          <button
-            className="w-full py-3 rounded-lg font-medium transition duration-300
-          bg-[var(--color-surface)] 
-          text-[var(--color-text)] 
-          border border-[var(--color-border)] 
-          hover:bg-[var(--color-border)]"
-          >
-            Sign up with Google
-          </button>
+          <GoogleLogin
+            onSuccess={async (credentialResponse) => {
+              try {
+                await registerWithGoogle(credentialResponse.credential);
+                alert("Google signup successful!");
+                navigate("/home");
+              } catch (err) {
+                alert(err.message);
+              }
+            }}
+            onError={() => {
+              alert("Google signup failed");
+            }}
+            useOneTap
+            render={({ onClick, disabled }) => (
+              <button
+                type="button"
+                onClick={onClick}
+                disabled={disabled}
+                className="w-full py-3 rounded-lg font-medium transition duration-300
+        bg-[var(--color-surface)] 
+        text-[var(--color-text)] 
+        border border-[var(--color-border)] 
+        hover:bg-[var(--color-border)]"
+              >
+                Sign up with Google
+              </button>
+            )}
+          />
 
           {/* SWITCH */}
           <p className="text-center text-sm mt-6 text-[var(--color-text-secondary)]">
