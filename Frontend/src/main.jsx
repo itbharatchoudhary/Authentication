@@ -5,7 +5,7 @@ import App from "./App/App.jsx";
 import "remixicon/fonts/remixicon.css";
 import "./Styles/index.css";
 
-const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+const clientId = import.meta.env.GOOGLE_CLIENT_ID;
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
