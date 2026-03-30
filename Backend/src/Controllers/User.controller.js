@@ -4,7 +4,10 @@ import * as userService from "../Services/User.service.js";
 export const getMe = async (req, res, next) => {
   try {
     const user = await userService.findUserById(req.user.sub);
-    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+    if (!user)
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
     res.status(200).json({ success: true, user });
   } catch (err) {
     next(err);

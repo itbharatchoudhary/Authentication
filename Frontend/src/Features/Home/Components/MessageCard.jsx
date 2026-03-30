@@ -84,35 +84,44 @@ const MessageCard = ({
           {/* Like */}
           <button
             onClick={handleLike}
-            className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-[13px] transition ${
+            className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-[13px] font-medium transition-all duration-200 ease-out active:scale-95 ${
               liked
-                ? "text-[var(--color-danger)] bg-[var(--color-danger)]/20"
+                ? "text-[var(--color-danger)] bg-[var(--color-danger)]/20 shadow-sm"
                 : "text-[var(--color-text-secondary)] hover:text-[var(--color-danger)] hover:bg-[var(--color-danger)]/20"
             }`}
           >
             <Heart
               size={16}
               fill={liked ? "currentColor" : "none"}
-              className={liked ? "animate-[heartPop_0.35s_ease]" : ""}
+              className={`transition-all duration-300 ${
+                liked ? "scale-110 animate-[heartPop_0.35s_ease]" : ""
+              }`}
             />
-            <span>{likeCount}</span>
+            <span className="transition-all duration-200">{likeCount}</span>
           </button>
 
           {/* Save */}
           <button
             onClick={() => setSaved((s) => !s)}
-            className={`p-1.5 rounded-full ${
+            className={`p-1.5 rounded-full transition-all duration-200 ease-out active:scale-95 ${
               saved
-                ? "text-[var(--color-accent)] bg-[var(--color-accent)]/20"
+                ? "text-[var(--color-accent)] bg-[var(--color-accent)]/20 shadow-sm"
                 : "text-[var(--color-text-secondary)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)]"
             }`}
           >
-            <Bookmark size={16} fill={saved ? "currentColor" : "none"} />
+            <Bookmark
+              size={16}
+              fill={saved ? "currentColor" : "none"}
+              className="transition-all duration-300"
+            />
           </button>
 
           {/* Share */}
-          <button className="p-1.5 rounded-full text-[var(--color-text-secondary)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)]">
-            <Share2 size={16} />
+          <button className="p-1.5 rounded-full text-[var(--color-text-secondary)] transition-all duration-200 ease-out hover:bg-[var(--color-surface)] hover:text-[var(--color-text)] active:scale-95">
+            <Share2
+              size={16}
+              className="transition-transform duration-200 hover:scale-110"
+            />
           </button>
         </div>
 

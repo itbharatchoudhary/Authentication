@@ -120,6 +120,31 @@ const ProfileCard = () => {
                   Twitter
                 </a>
               )}
+
+              {/* Logout Button */}
+              <button
+                onClick={() => {
+                  // TODO: call your logout function
+                  console.log("Logout clicked");
+                }}
+                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
+                style={{
+                  borderColor: "var(--color-border)",
+                  color: "var(--color-text-secondary)",
+                  background: "transparent",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(255,0,0,0.08)";
+                  e.currentTarget.style.color = "var(--color-danger)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.color = "var(--color-text-secondary)";
+                }}
+              >
+                <i className="fas fa-sign-out-alt"></i>
+                Logout
+              </button>
             </div>
           )}
         </div>
