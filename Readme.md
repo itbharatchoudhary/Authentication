@@ -128,7 +128,7 @@ Reference: https://developers.google.com/oauthplayground
 ---
 
 **README 6 — OTP and Client URL**
-File: (README_6_OTP_CLIENT.md)[Notes/ENV_FILE/README_OTP_CLIENT.md]
+(README_6_OTP_CLIENT.md)[Notes/ENV_FILE/README_OTP_CLIENT.md]
 
 Covers `OTP_EXPIRES_IN_MINUTES` and `CLIENT_URL`. Both are values you set yourself. This guide explains what each one controls and how to update them when moving from local development to production.
 
