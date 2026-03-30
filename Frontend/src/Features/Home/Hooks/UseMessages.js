@@ -1,0 +1,51 @@
+import { useState, useEffect } from "react";
+import {
+  fetchMessages,
+  createMessage,
+  toggleLikeMessage,
+} from "../Services/Message.Service";
+
+export const useMessages = () => {
+  const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const loadMessages = async () => {
+    setLoading(true);
+    try {
+      const msgs = await fetchMessages();
+      setMessages(msgs);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadMessages();
+  }, []);
+
+  const addMessage = async (msg) => {
+    try {
+      const newMsg = await createMessage(msg);
+      setMessages((prev) => [newMsg, ...prev]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const toggleLike = async (id) => {
+    try {
+      const data = await toggleLikeMessage(id);
+      setMessages((prev) =>
+        prev.map((m) =>
+          m._id === id ? { ...m, likes: Array(data.likes).fill("user") } : m,
+        ),
+      );
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  return { messages, loading, addMessage, toggleLike, loadMessages };
+};
