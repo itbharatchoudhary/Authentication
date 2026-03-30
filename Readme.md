@@ -85,14 +85,14 @@ Work through these in sequence. Some later sections depend on things set up in e
 ---
 
 **README 1 — Server**
-File: (README_SERVER.md)[Notes/ENV_FILE/README_SERVER.md]
+File: [README_SERVER.md](Notes/ENV_FILE/README_SERVER.md)
 
 Covers `PORT` and `NODE_ENV`. These are values you define yourself with no external service required. Start here.
 
 ---
 
 **README 2 — Database**
-File: (README_2_DATABASE.md)[Notes/ENV_FILE/README_DATABASE.md]
+File: [README_DATABASE.md](Notes/ENV_FILE/README_DATABASE.md)
 
 Covers `MONGO_URI`. Walks you through creating a free MongoDB Atlas account, setting up a cluster, creating a database user, configuring network access, and copying your connection string.
 
@@ -101,7 +101,7 @@ Reference: https://www.mongodb.com/cloud/atlas/register
 ---
 
 **README 3 — JWT**
-File: (README_3_JWT.md)[Notes/ENV_FILE/README_JWT.md]
+File: [README_JWT.md](Notes/ENV_FILE/README_JWT.md)
 
 Covers `JWT_ACCESS_SECRET`, `JWT_REFRESH_SECRET`, `JWT_ACCESS_EXPIRES_IN`, and `JWT_REFRESH_EXPIRES_IN`. Explains the two-token authentication pattern and shows you how to generate cryptographically secure secrets from your terminal.
 
@@ -110,7 +110,7 @@ Reference: [JWTSecrets](https://jwtsecrets.com/)
 ---
 
 **README 4 — Google OAuth**
-File: (README_4_GOOGLE_OAUTH.md)[Notes/ENV_FILE/README_GOOGLE_OAUTH.md]
+File: [README_GOOGLE_OAUTH.md](Notes/ENV_FILE/README_GOOGLE_OAUTH.md)
 
 Covers `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, and `GOOGLE_REDIRECT_URI`. Walks you through creating a Google Cloud project, configuring the OAuth consent screen, and generating credentials.
 
@@ -119,7 +119,7 @@ Reference: https://console.cloud.google.com
 ---
 
 **README 5 — Mail**
-File: (README_5_MAIL.md)[Notes/ENV_FILE/README_MAIL.md]
+File: [README_MAIL.md](Notes/ENV_FILE/README_MAIL.md)
 
 Covers `MAIL_USER`, `MAIL_CLIENT_ID`, `MAIL_CLIENT_SECRET`, and `MAIL_REFRESH_TOKEN`. This section builds on README 4. It shows you how to enable the Gmail API and use the OAuth2 Playground to generate a refresh token so your app can send emails.
 
@@ -128,7 +128,7 @@ Reference: https://developers.google.com/oauthplayground
 ---
 
 **README 6 — OTP and Client URL**
-(README_6_OTP_CLIENT.md)[Notes/ENV_FILE/README_OTP_CLIENT.md]
+File: [README_OTP_CLIENT](Notes/ENV_FILE/README_OTP_CLIENT.md)
 
 Covers `OTP_EXPIRES_IN_MINUTES` and `CLIENT_URL`. Both are values you set yourself. This guide explains what each one controls and how to update them when moving from local development to production.
 
