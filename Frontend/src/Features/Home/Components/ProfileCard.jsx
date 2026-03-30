@@ -1,33 +1,18 @@
 import React from "react";
-
-const user = {
-  name: "Bharat Sharma",
-  username: "bharat_dev",
-  bio: "Full Stack Developer | MERN | Learning everyday 🚀",
-  avatar: "https://i.pravatar.cc/150?img=3",
-  coverPhoto:
-    "https://i.pinimg.com/736x/c0/23/f1/c023f1bdf21774e226391b23e6312333.jpg",
-  role: "Full Stack Developer",
-  company: "Freelance / Startup",
-  location: "India",
-  socialLinks: {
-    linkedin: "https://linkedin.com/in/bharat_dev",
-    github: "https://github.com/bharat_dev",
-    twitter: "https://twitter.com/bharat_dev",
-  },
-  callToAction: {
-    label: "Book a Free UX Audit",
-    link: "#",
-  },
-};
+import { useProfile } from "../Hooks/useProfile";
 
 const ProfileCard = () => {
+  const { profile, loading } = useProfile();
+
+  if (loading) return <p className="text-center">Loading profile...</p>;
+  if (!profile) return <p className="text-center">Profile not found</p>;
+
   return (
     <div className="w-full bg-[var(--color-card)] shadow-lg  overflow-hidden transition-[var(--transition-normal)]">
       {/* Cover Photo */}
       <div className="relative w-full h-64 md:h-72 lg:h-80">
         <img
-          src={user.coverPhoto}
+          src={profile.coverPhoto}
           alt="Cover"
           className="w-full theme-image h-full object-cover brightness-75"
         />
@@ -37,8 +22,8 @@ const ProfileCard = () => {
           style={{ borderColor: "var(--color-border)" }}
         >
           <img
-            src={user.avatar}
-            alt={user.name}
+            src={profile.avatar}
+            alt={profile.name}
             className="w-full h-full rounded-full shadow-lg object-cover"
           />
         </div>
@@ -52,41 +37,41 @@ const ProfileCard = () => {
             className="text-3xl font-bold"
             style={{ color: "var(--color-text)" }}
           >
-            {user.name}
+            {profile.name}
           </h2>
           <p
             className="text-sm mt-1"
             style={{ color: "var(--color-text-secondary)" }}
           >
-            @{user.username}
+            @{profile.username}
+
           </p>
 
           <div
             className="mt-2 flex flex-wrap items-center gap-2 text-sm"
             style={{ color: "var(--color-text-secondary)" }}
           >
-            {user.role && <span className="font-medium">{user.role}</span>}
-            {user.company && <span>• {user.company}</span>}
-            {user.location && <span>• {user.location}</span>}
+            {profile.role && <span className="font-medium">{profile.role}</span>}
+            {profile.company && <span>• {profile.company}</span>}
+            {profile.location && <span>• {profile.location}</span>}
           </div>
 
-          {user.bio && (
-            <p
-              className="mt-4 text-sm leading-relaxed max-w-xl"
-              style={{ color: "var(--color-text-secondary)" }}
-            >
-              {user.bio}
+          {profile.bio && (
+             <p className="mt-4 text-sm leading-relaxed max-w-xl" style={{ color: "var(--color-text-secondary)" }}>
+              {profile.bio}
             </p>
           )}
         </div>
 
         <div className="flex flex-col items-center md:items-end gap-3">
+
           {/* Social Links */}
-          {user.socialLinks && (
+
+          {profile.socialLinks && (
             <div className="flex flex-col gap-3 text-sm font-medium">
-              {user.socialLinks.linkedin && (
+              {profile.socialLinks.linkedin && (
                 <a
-                  href={user.socialLinks.linkedin}
+                  href={profile.socialLinks.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 hover:opacity-80 transition-[var(--transition-fast)]"
@@ -96,9 +81,9 @@ const ProfileCard = () => {
                   LinkedIn
                 </a>
               )}
-              {user.socialLinks.github && (
+              {profile.socialLinks.github && (
                 <a
-                  href={user.socialLinks.github}
+                  href={profile.socialLinks.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 hover:opacity-80 transition-[var(--transition-fast)]"
@@ -108,9 +93,9 @@ const ProfileCard = () => {
                   GitHub
                 </a>
               )}
-              {user.socialLinks.twitter && (
+              {profile.socialLinks.twitter && (
                 <a
-                  href={user.socialLinks.twitter}
+                  href={profile.socialLinks.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 hover:opacity-80 transition-[var(--transition-fast)]"
@@ -123,10 +108,7 @@ const ProfileCard = () => {
 
               {/* Logout Button */}
               <button
-                onClick={() => {
-                  // TODO: call your logout function
-                  console.log("Logout clicked");
-                }}
+                onClick={() => console.log("Logout clicked")}
                 className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
                 style={{
                   borderColor: "var(--color-border)",
