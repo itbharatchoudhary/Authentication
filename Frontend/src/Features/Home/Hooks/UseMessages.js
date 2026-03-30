@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useAuth } from "../../Auth/Context/AuthContext";
 import {
   fetchMessages,
   createMessage,
@@ -8,6 +9,7 @@ import {
 export const useMessages = () => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { token } = useAuth();
 
   const loadMessages = async () => {
     setLoading(true);
@@ -44,8 +46,10 @@ export const useMessages = () => {
   };
 
   useEffect(() => {
+    if (!token) return; 
+
     loadMessages();
-  }, []);
+  }, [token]);
 
   return { messages, loading, addMessage, toggleLike, loadMessages };
 };
