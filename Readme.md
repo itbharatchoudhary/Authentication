@@ -170,7 +170,16 @@ OTP_EXPIRES_IN_MINUTES=10
 CLIENT_URL=http://localhost:3000
 ```
 
----
+# For More in detail Go to this page
+## 026-nodemailer by Ankur Prajapati
+[026-nodemailer](https://github.com/ankurdotio/Difference-Backend-video/tree/main/026-nodemailer)
+
+## 025-googleoauth by Ankur Prajapati
+[025-googleoauth](https://github.com/ankurdotio/Difference-Backend-video/tree/main/025-googleoauth)
+
+# Ankur Prajapati - profile
+[Ankur Prajapati](https://github.com/ankurdotio)
+
 
 ## Security Checklist Before Going Live
 
