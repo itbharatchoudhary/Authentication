@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Auth/Context/AuthContext"; // 
+import { useAuth } from "../../Auth/Context/AuthContext";
 const Navbar = () => {
-  const navigate = useNavigate();
-  const { dark, toggleTheme } = useAuth(); // <-- Use global theme from context
+  const { dark, toggleTheme } = useAuth();
   const [time, setTime] = useState(new Date());
 
   // Update time every minute
@@ -57,20 +55,6 @@ const Navbar = () => {
             <i className="ri-moon-line text-[var(--color-text)] text-lg"></i>
           )}
         </button>
-
-        {/* PROFILE AVATAR */}
-        <div
-          className="w-10 h-10 rounded-full overflow-hidden cursor-pointer
-                     border border-[var(--color-border)] shadow-[var(--shadow-sm)]
-                     hover:scale-105 transition-[var(--transition-normal)]"
-          onClick={() => navigate("/profile")}
-        >
-          <img
-            src="https://i.pinimg.com/736x/34/35/b7/3435b70e1087f790af3aa209219df67d.jpg"
-            alt="Profile"
-            className="w-full h-full object-cover"
-          />
-        </div>
       </div>
     </div>
   );
