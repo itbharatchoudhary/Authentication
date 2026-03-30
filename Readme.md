@@ -29,7 +29,7 @@ The backend handles **user data, authentication logic, token management, and dat
 ---
 [BackendNotes-Readme-File](Notes/BackendNotes/Readme.md)
 
-[Terminal-commands-of-Backend](Notes\BackendNotes\TerminalCommands.md)
+[Terminal-commands-of-Backend](Notes/BackendNotes/TerminalCommands.md)
 
 
 
@@ -57,6 +57,6 @@ The frontend provides a **user interface** for registration, login, and profile 
 
 ---
 
-[FrontendNotes-Readme-File](Notes\FrontendNotes\Readme.md)
+[FrontendNotes-Readme-File](Notes/FrontendNotes/Readme.md)
 
-[Terminal-commands-of-Frontend](Notes\FrontendNotes\TerminalCommands.md)
+[Terminal-commands-of-Frontend](Notes/FrontendNotes/TerminalCommands.md)
