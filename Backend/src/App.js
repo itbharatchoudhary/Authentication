@@ -8,7 +8,6 @@ import { errorHandler, notFound } from "./Middleware/Error.middleware.js";
 import authRoutes from "./Routes/auth.routes.js";
 import userRoutes from "./Routes/User.routes.js";
 import otpRoutes from "./Routes/OTP.routes.js";
-import messageRoutes from "./Routes/Message.routes.js";
 
 import config from "./Config/Index.js";
 
@@ -29,7 +28,6 @@ app.get("/health", (_, res) =>
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/otp", otpRoutes);
-app.use("/api/messages", messageRoutes);
 
 // ─── Error Handling ───────────────────────────────────────────────────────────
 app.use(notFound);
