@@ -183,4 +183,4 @@ Before deploying your application, go through each of these:
 - Update `CLIENT_URL` to your real deployed frontend URL.
 - Update `GOOGLE_REDIRECT_URI` to your real deployed backend callback URL.
 - Publish your Google OAuth consent screen so all users (not just test users) can sign in.
-- Confirm your Gmail OAuth2 refresh token was generated against a published app so it does not expire every 7 days.
+- Confirm your Gmail OAuth2 refresh token was generated against a published app so it does not expire every 7days. 
