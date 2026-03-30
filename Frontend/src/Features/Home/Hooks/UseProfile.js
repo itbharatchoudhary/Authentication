@@ -1,25 +1,24 @@
 import { useState, useEffect } from "react";
-import { fetchProfile } from "../Services/Profile.Service";
+import api from "../../../Services/Api";
 
 export const useProfile = () => {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const loadProfile = async () => {
-    setLoading(true);
+  const fetchProfile = async () => {
     try {
-      const data = await fetchProfile();
-      setProfile(data);
+      const res = await api.get("/users/me");
+      setProfile(res.data);
     } catch (err) {
-      console.error(err);
+      console.error("Profile fetch error", err);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    loadProfile();
+    fetchProfile();
   }, []);
 
-  return { profile, loading, reloadProfile: loadProfile };
+  return { profile, loading, setProfile };
 };
