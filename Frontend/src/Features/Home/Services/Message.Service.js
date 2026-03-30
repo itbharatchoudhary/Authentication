@@ -1,27 +1,26 @@
 import axios from "axios";
+import api from "../../../Services/Api";
 
-const API_URL = "http://localhost:3000/api/messages";
-
+// GET all messages
 export const fetchMessages = async () => {
-  const { data } = await axios.get(API_URL, { withCredentials: true });
+  const { data } = await api.get("/messages");
   return data.messages;
 };
 
-export const createMessage = async (messages) => {
-  const { data } = await axios.post(
-    API_URL,
-    { messages },
-    { withCredentials: true },
-  );
+// CREATE message
+export const createMessage = async (message) => {
+  const { data } = await api.post("/messages", { message });
   return data;
 };
 
+// LIKE / UNLIKE
 export const toggleLikeMessage = async (id) => {
-  const { data } = await axios.post(`${API_URL}/${id}/like`, {}, { withCredentials: true });
+  const { data } = await api.post(`/messages/${id}/like`);
   return data;
 };
 
+// GET my messages
 export const fetchMyMessages = async () => {
-  const { data } = await axios.get(`${API_URL}/my`, { withCredentials: true });
+  const { data } = await api.get("/messages/my");
   return data.messages;
 };

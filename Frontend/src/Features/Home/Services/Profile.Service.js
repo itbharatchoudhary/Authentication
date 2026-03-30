@@ -1,8 +1,6 @@
-import axios from "axios";
-
-const API_URL = "http://localhost:3000/api/users";
+import api from "../../../Services/Api";
 
 export const fetchProfile = async () => {
-  const { data } = await axios.get(`${API_URL}/me`, { withCredentials: true });
-  return data;
+  const { data } = await api.get("/users/me");
+  return data.user; 
 };
