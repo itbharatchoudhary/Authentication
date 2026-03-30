@@ -21,10 +21,6 @@ export const useMessages = () => {
     }
   };
 
-  useEffect(() => {
-    loadMessages();
-  }, []);
-
   const addMessage = async (msg) => {
     try {
       const newMsg = await createMessage(msg);
@@ -46,6 +42,10 @@ export const useMessages = () => {
       console.error(err);
     }
   };
+
+  useEffect(() => {
+    loadMessages();
+  }, []);
 
   return { messages, loading, addMessage, toggleLike, loadMessages };
 };

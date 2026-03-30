@@ -1,60 +1,28 @@
 import { useState } from "react";
 import MessageCard from "../Components/MessageCard";
+import { useMessages } from "../Hooks/UseMessages";
 
 const HomePage = ({ toggleTheme, dark }) => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
-
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      user: {
-        name: "Bharat Sharma",
-        avatar: "https://i.pravatar.cc/150?img=3",
-        handle: "@bharatsharma",
-      },
-      message: "Authentication is the backbone of any secure application 🔐",
-      time: "2h ago",
-      likes: 12,
-    },
-    {
-      id: 2,
-      user: {
-        name: "Ravi Verma",
-        avatar: "https://i.pravatar.cc/150?img=5",
-        handle: "@raviverma",
-      },
-      message: "JWT made things so much easier to manage sessions 🚀",
-      time: "5h ago",
-      likes: 8,
-    },
-  ]);
+  const { messages, addMessage, toggleLike, loading } = useMessages();
 
   const handlePost = () => {
     if (!message.trim()) return alert("Message cannot be empty");
-
-    const newMessage = {
-      id: Date.now(),
-      user: {
-        name: "You",
-        avatar: "https://i.pravatar.cc/150",
-        handle: "@you",
-      },
-      message,
-      time: "Just now",
-      likes: 0,
-    };
-
-    setMessages((prev) => [newMessage, ...prev]);
+    addMessage(message);
     setMessage("");
     setOpen(false);
   };
 
+  if (loading) return <p>Loading messages...</p>;
+
   return (
     <div className="w-full" style={{ background: "var(--color-bg)" }}>
       {/* Hero Section */}
+
       <div className="relative w-full h-screen overflow-hidden">
         {/* Background Image */}
+
         <div
           className="absolute theme-image inset-0 bg-cover bg-center m-10 rounded-4xl mt-20"
           style={{
@@ -109,7 +77,9 @@ const HomePage = ({ toggleTheme, dark }) => {
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-green-400/20 rounded-full blur-2xl"></div>
 
               <div className="relative z-10">
-                <h2 className="text-2xl font-semibold mb-4">Write Your Message</h2>
+                <h2 className="text-2xl font-semibold mb-4">
+                  Write Your Message
+                </h2>
 
                 <textarea
                   value={message}
@@ -153,10 +123,18 @@ const HomePage = ({ toggleTheme, dark }) => {
       </div>
 
       {/* User Opinions Section */}
-      <div className="px-3 md:px-12 py-12" style={{ background: "var(--color-surface)" }}>
+
+      <div
+        className="px-3 md:px-12 py-12"
+        style={{ background: "var(--color-surface)" }}
+      >
         {/* Heading */}
+
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold" style={{ color: "var(--color-text)" }}>
+          <h2
+            className="text-3xl md:text-4xl font-bold"
+            style={{ color: "var(--color-text)" }}
+          >
             User Opinions on Authentication
           </h2>
           <p className="mt-3" style={{ color: "var(--color-text-secondary)" }}>
@@ -165,11 +143,16 @@ const HomePage = ({ toggleTheme, dark }) => {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 place-items-center">
-          {messages.map((msg) => (
-            <MessageCard key={msg.id} {...msg} />
-          ))}
-        </div>
+        {/* Messages */}
+        {loading ? (
+          <p className="text-center">Loading messages...</p>
+        ) : (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 place-items-center">
+            {messages.map((msg) => (
+              <MessageCard key={msg._id} {...msg} toggleLike={toggleLike} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
