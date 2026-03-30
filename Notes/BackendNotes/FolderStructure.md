@@ -1,53 +1,52 @@
-Backend/
+Authentication-Backend/
 │
-├── node_modules/
-├── logs/
-│
-├── src/
+├── Backend/
+│   ├── logs/                          # Folder to store server logs
 │   │
-│   ├── config/                 # All configuration files
-│   │   ├── config.js
-│   │   ├── database.js
-│   │   ├── googleAuth.js
-│   │   ├── mailer.js
-│   │   └── index.js
+│   ├── node_modules/                  # Installed npm packages
 │   │
-│   ├── controllers/            # Handle request & response
-│   │   ├── auth.controller.js
-│   │   ├── otp.controller.js
-│   │   └── user.controller.js
+│   ├── src/                           # Source code folder
+│   │   ├── Config/                    # Configuration files
+│   │   │   ├── Database.js            # MongoDB connection setup
+│   │   │   ├── GoogleAuth.js          # Google OAuth configuration
+│   │   │   ├── Index.js               # Central export for all configs
+│   │   │   └── Mailer.js              # Email transporter configuration
+│   │   │
+│   │   ├── Controllers/               # Handles requests & responses
+│   │   │   ├── Auth.controller.js     # Authentication logic (login/register)
+│   │   │   ├── OTP.controller.js      # OTP verification logic
+│   │   │   └── User.controller.js     # User CRUD operations
+│   │   │
+│   │   ├── Middleware/                # Express middleware
+│   │   │   ├── Auth.middleware.js     # Protect routes and check auth
+│   │   │   ├── Error.middleware.js    # Global error handling
+│   │   │   └── RateLimit.middleware.js# Rate limiting for endpoints
+│   │   │
+│   │   ├── Models/                     # Mongoose models
+│   │   │   ├── OTP.model.js           # OTP schema
+│   │   │   ├── Session.model.js       # Session schema
+│   │   │   └── User.model.js          # User schema
+│   │   │
+│   │   ├── Routes/                     # Route definitions
+│   │   │   ├── auth.routes.js         # Routes for login/register/auth
+│   │   │   ├── OTP.routes.js          # Routes for OTP verification
+│   │   │   └── User.routes.js         # Routes for user management
+│   │   │
+│   │   ├── Services/                   # Business logic and helpers
+│   │   │   ├── Auth.service.js        # Authentication services
+│   │   │   ├── OTP.service.js         # OTP services
+│   │   │   ├── Token.service.js       # JWT token services
+│   │   │   └── User.service.js        # User services
+│   │   │
+│   │   ├── utils/                      # Utility functions
+│   │   │   ├── emailTemplate.js       # Email HTML templates
+│   │   │   ├── hash.js                # Hashing utility (passwords, OTP)
+│   │   │   └── logger.js              # Logger utility for debug/info
+│   │   │
+│   │   ├── App.js                      # Express app setup
 │   │
-│   ├── services/               # Business logic
-│   │   ├── auth.service.js
-│   │   ├── otp.service.js
-│   │   ├── token.service.js
-│   │   └── user.service.js
-│   │
-│   ├── models/                 # Database schemas
-│   │   ├── user.model.js
-│   │   ├── otp.model.js
-│   │   └── session.model.js
-│   │
-│   ├── routes/                 # API routes
-│   │   ├── auth.routes.js
-│   │   ├── otp.routes.js
-│   │   └── user.routes.js
-│   │
-│   ├── middleware/             # Middlewares
-│   │   ├── auth.middleware.js
-│   │   ├── error.middleware.js
-│   │   └── rateLimit.middleware.js
-│   │
-│   ├── utils/                  # Helper functions
-│   │   ├── hash.js
-│   │   ├── logger.js
-│   │   └── emailTemplate.js
-│   │
-│   ├── app.js                  # Express app setup
-│   │
-│   └── server.js               # Server start file
-│
-├── .env                        # Environment variables
-├── .gitignore
-├── package.json
-└── package-lock.json
+│   ├── .env                            # Environment variables
+│   ├── .gitignore                      # Git ignore configuration
+│   ├── package.json                     # Project dependencies & scripts
+│   ├── package-lock.json                # Lock file for npm
+│   └── Server.js                        # Entry point: starts the server

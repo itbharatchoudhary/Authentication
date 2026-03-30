@@ -1,6 +1,6 @@
 # Authentication system flow 
 
-## Email OTP-Based Registration Flow
+##   Manually Registration/login  Flow
 User → Register (email, password)
    ↓
 Create User (isVerified = false)
@@ -13,11 +13,17 @@ User enters OTP
    ↓
 Verify OTP
    ↓
-Activate Account (isVerified = true)
+User → Enter email + password
    ↓
-Generate Access + Refresh Token
+Find user
    ↓
-User LoggedIn 
+Check password (bcrypt compare)
+   ↓
+Check isVerified
+   ↓
+Generate tokens
+   ↓
+Login success 
 
 ## Google OAuth Login Flow
 
@@ -36,38 +42,8 @@ Generate Access + Refresh Token
    ↓
 User Logged In 
 
-## Manual Login Authentication Flow
 
-User → Enter email + password
-   ↓
-Find user
-   ↓
-Check password (bcrypt compare)
-   ↓
-Check isVerified
-   ↓
-Generate tokens
-   ↓
-Login success 
 
-## Forgot Password Flow
 
-User → "Forgot Password"
-   ↓
-Enter email
-   ↓
-Generate OTP
-   ↓
-Send OTP
-   ↓
-User enters OTP
-   ↓
-Verify OTP
-   ↓
-Allow password reset
-   ↓
-Update password (hashed)
-   ↓
-Invalidate all sessions
-   ↓
-Login again 
+
+
