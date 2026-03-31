@@ -32,12 +32,10 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/otp", otpRoutes);
 
-// ─── Serve Frontend  ─────────────────────────────────────────────
-app.use(express.static(path.join(__dirname, "Frontend/dist")));
+app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 
-// ─── SPA Fallback  ────────────────────────────────────────────
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "Frontend", "dist", "index.html"));
+app.get("/{*any}", (req, res) => {
+  res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"));
 });
 
 // ─── Error Handling ───────────────────────────────────────────────────────────
