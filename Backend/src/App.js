@@ -18,6 +18,7 @@ app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(generalLimiter);
+app.use(express.static("./public"));
 
 // ─── Health Check ─────────────────────────────────────────────────────────────
 app.get("/health", (_, res) =>
@@ -28,6 +29,7 @@ app.get("/health", (_, res) =>
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/otp", otpRoutes);
+
 
 // ─── Error Handling ───────────────────────────────────────────────────────────
 app.use(notFound);
