@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
+import path from "path";
 
 import { generalLimiter } from "./Middleware/RateLimit.middleware.js";
 import { errorHandler, notFound } from "./Middleware/Error.middleware.js";
@@ -10,6 +11,7 @@ import userRoutes from "./Routes/User.routes.js";
 import otpRoutes from "./Routes/OTP.routes.js";
 
 import config from "./Config/Index.js";
+const __dirname = path.resolve();
 
 const app = express();
 
@@ -30,6 +32,13 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/otp", otpRoutes);
 
+// ─── Serve Frontend  ─────────────────────────────────────────────
+app.use(express.static(path.join(__dirname, "Frontend/dist")));
+
+// ─── SPA Fallback  ────────────────────────────────────────────
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "Frontend", "dist", "index.html"));
+});
 
 // ─── Error Handling ───────────────────────────────────────────────────────────
 app.use(notFound);
